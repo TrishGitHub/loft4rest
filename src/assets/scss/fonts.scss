@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Sansus Webissimo';
+    src: url('./assets/fonts/SansusWebissimo/SansusWebissimo.eot');
+    src: url('./assets/fonts/SansusWebissimo/SansusWebissimo.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/SansusWebissimo/SansusWebissimo.woff2') format('woff2'),
+    url('./assets/fonts/SansusWebissimo/SansusWebissimo.woff') format('woff'),
+    url('./assets/fonts/SansusWebissimo/SansusWebissimo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Bold.ttf'),
+    url('./assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Medium.ttf'),
+    url('./assets/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Regular.ttf'),
+    url('./assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Light.ttf'),
+    url('./assets/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}

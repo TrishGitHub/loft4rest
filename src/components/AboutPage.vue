@@ -1,18 +1,23 @@
 <template lang="pug">
 	.wrapper.about-page
 		header.main-header
-		main.main-content
-			section
-				h2.sec-ttl Обо мне
-				h3.sec-subttl Кто я
-				.sec-txt
-					p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-					p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите,как тут всё классно и красиво!
-			section
+		main.main-content.content_2cols
+			section.sec__about
+				.sec-head
+					h2.sec-ttl Обо мне
+				.sec-body
+					.sec-img
+						img(src="../assets/images/content/Ira-Noschenko.jpg", class="", alt="Ира Нощенко")
+					h3.sec-subttl Кто я
+					.sec-txt
+						p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+						p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите,как тут всё классно и красиво!
+			section.sec__skills
 				h3.sec-subttl Чем я могу быть вам полезен
 				.sec-txt
 					p Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
-				ul.skill-list Frontend
+				ul.skill-list
+					li.skill-head Frontend
 					li.skill-item
 						span.skill-ttl HTML5
 						svg.circles(viewbox='0 0 110 110')
@@ -30,7 +35,8 @@
 						svg.circles(viewbox='0 0 110 110')
 							circle.circle__first(r='45', cx='50%', cy='50%', fill='none')
 							circle.circle__second.circle-15(r='45', cx='50%', cy='50%', transform='rotate(-90 55 55)')
-				ul.skill-list Backend
+				ul.skill-list
+					li.skill-head Backend
 					li.skill-item
 						span.skill-ttl PHP
 						svg.circles(viewbox='0 0 110 110')
@@ -53,7 +59,8 @@
 						svg.circles(viewbox='0 0 110 110')
 							circle.circle__first(r='45', cx='50%', cy='50%', fill='none')
 							circle.circle__second.circle-15(r='45', cx='50%', cy='50%', transform='rotate(-90 55 55)')
-				ul.skill-list WorkFlow
+				ul.skill-list
+					li.skill-head WorkFlow
 					li.skill-item
 						span.skill-ttl Git
 						svg.circles(viewbox='0 0 110 110')
@@ -69,18 +76,18 @@
 						svg.circles(viewbox='0 0 110 110')
 							circle.circle__first(r='45', cx='50%', cy='50%', fill='none')
 							circle.circle__second.circle-15(r='45', cx='50%', cy='50%', transform='rotate(-90 55 55)')
-			section
-			section
-				h3.sec-subttl Контакты
-					ul.social-list
-				li.social-item
-					a.social-link Skype
-				li.social-item
-					a.social-link
-				li.social-item
-					a.social-link
-				li.social-item
-					a.social-link
+		section
+		section
+			h3.sec-subttl Контакты
+				ul.social-list
+			li.social-item
+				a.social-link Skype
+			li.social-item
+				a.social-link
+			li.social-item
+				a.social-link
+			li.social-item
+				a.social-link
 		footer.main-footer
 			section
 			.copy © Владимир Астахов | Создано с любовью в LoftSchool | 2016
@@ -104,11 +111,18 @@
 
 <style lang="scss">
 	
+	@import '../assets/scss/normalize';
+	@import '../assets/scss/variables';
+	
 	$green-light: #649257;
 	$green-dark: #487f39;
 	$font-sansus: 'Sansus Webissimo';
-	
-	.about-page { background: none; }
+	$font-roboto: 'Roboto';
+
+	.about-page { background: none;
+		.main-header { height: 600px; background: url("../assets/images/bg/water.jpg") 50% 50% no-repeat; }
+	};
+	.content_2cols { display: flex; }
 	
 	.sec {
 		&-ttl {position: relative; font-family: $font-sansus; font-size: 44px; text-transform: uppercase; color: rgba(55, 62, 66, 255);
@@ -140,13 +154,45 @@
 			}
 		}
 		&-txt {color: rgba(86, 99, 88, 255);}
+		&__about { position: relative; display: flex; width: 50%; padding: 20px; background: #ebefe2;
+			&::before {
+				content: "";
+				position: absolute;
+				top: -150px;
+				left: 0;
+				display: block;
+				width: 0;
+				height: 0;
+				border: 0 solid transparent;
+				border-bottom-width: 0;
+				border-top-width: 150px;
+				border-left: 50vw solid #ebefe2;
+			}
+			.sec-head, .sec-body { width: 50%; }
+		}
+		&__skills { position: relative; width: 50%; padding: 20px; background: #f4f5f0;
+			&::after {
+				content: "";
+				position: absolute;
+				top: -150px;
+				left: 0;
+				display: block;
+				width: 0;
+				height: 0;
+				border: 0 solid transparent;
+				border-bottom-width: 0;
+				border-top-width: 150px;
+				border-right: 50vw solid #f4f5f0;
+			}
+		}
 	}
 
 	.skill{
-		&-list {font-size: 22px; font-weight: 600; color: rgba(86, 99, 88, 255);}
+		&-list {font-size: 22px; padding-left: 0; font-weight: 600; text-align: left; color: rgba(86, 99, 88, 255);}
 		&-item {
 			position: relative;
 			display: inline-block;
+			padding: 10px 10px 10px 0;
 
 		}
 		&-ttl {
@@ -156,6 +202,8 @@
 			left: 0;
 			right: 0;
 			margin: auto;
+			text-align: center;
+			padding-right: 10px;
 			font-size: 11px;
 			color: rgba(78, 136, 57, 255);
 			pointer-events: none;

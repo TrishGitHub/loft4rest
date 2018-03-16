@@ -17,21 +17,10 @@
 </script>
 
 <style lang="scss">
-  @font-face {
-    font-family: 'Sansus Webissimo';
-    src: url('./assets/fonts/SansusWebissimo/SansusWebissimo.eot');
-    src: url('./assets/fonts/SansusWebissimo/SansusWebissimo.eot?#iefix') format('embedded-opentype'),
-    url('./assets/fonts/SansusWebissimo/SansusWebissimo.woff2') format('woff2'),
-    url('./assets/fonts/SansusWebissimo/SansusWebissimo.woff') format('woff'),
-    url('./assets/fonts//SansusWebissimo/SansusWebissimo.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  $green-light: #649257;
-  $green-dark: #487f39;
-  $font-sansus: 'Sansus Webissimo';
-  
+	
+	@import './assets/scss/normalize';
+	@import './assets/scss/fonts';
+	@import './assets/scss/variables';
   
   
   body, html {
