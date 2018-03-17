@@ -1,7 +1,7 @@
 <template lang="pug">
-	.wrapper.page__inner
+	.wrapper.page__inner.page__about
 		header.main-header
-		main.main-content.content_2cols
+		main.main-content.wrap__2cols
 			section.sec__about
 				.sec-head
 					h2.sec-ttl Обо мне
@@ -135,4 +135,13 @@
 	
 	@import '../assets/scss/normalize';
 	@import '../assets/scss/variables';
+	
+	.page__about {
+		.footer__main {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
 </style>

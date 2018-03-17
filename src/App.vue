@@ -62,18 +62,125 @@
   ul {
     list-style-type: none;
   }
+  
+  .form { position: relative; }
 	
-
+	textarea {
+		resize: vertical;
+		outline: none;
+	}
+	
+	.form-group {
+		display: block;
+	}
+	
+	.input-field {
+		width: 100%;
+		box-sizing: border-box;
+		margin: 5px 0;
+		padding: 10px 20px;
+		border: none;
+		outline: none;
+		border-radius: 20px;
+	}
+	
+	.input-field::placeholder {
+		color: rgba(93, 90, 85, .5);
+	}
+  
+  .content__wide {
+	  position: relative;
+	  
+	  &::before, &::after {
+		  content: "";
+		  position: absolute;
+		  top: -150px;
+		  display: block;
+		  width: 0;
+		  height: 0;
+		  border: 0 solid transparent;
+		  border-bottom-width: 0;
+		  border-top-width: 150px;
+		  pointer-events: none;
+	  }
+	  
+	  &::before {left: 0;  border-left: 50vw solid #fff;}
+	  &::after { right: 0;  border-right: 50vw solid #fff; }
+  }
+	
+	
+	.btn {
+		position: absolute;
+		top: 25px;
+		right: 5%;
+		padding: 10px 25px;
+		background: none repeat scroll 0 0 transparent;
+		border: 1px solid #fff;
+		border-spacing: 0;
+		border-radius: 20px;
+		color: #fff;
+		font-size: 16px;
+		font-weight: normal;
+		line-height: 1.42rem;
+		list-style: none outside none;
+		margin: 0;
+		text-align: left;
+		text-decoration: none;
+		text-indent: 0;
+		outline: none;
+		cursor: pointer;
+		transition: background .3s;
+		
+		&:hover {
+			background-color: rgba(255, 255, 255, .2);
+		}
+	}
+	
+	.btn__green {
+		position: initial;
+		display: inline-block;
+		margin: 30px;
+		background: $green-light;
+		border-color: $green-light;
+		
+		&:hover { background: $green-dark; border-color: $green-dark; }
+	}
+	
+	.btn_group {
+		display: flex;
+		flex-direction: row;
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: calc(100% + 40px);
+		margin-left: -20px;
+		padding-top: 20px;
+		
+		.btn__green {
+			width: 50%;
+			margin: 0;
+			border-radius: initial;
+			text-align: center;
+			
+			&:last-child { background: $green-dark; }
+		}
+	}
+	
 	/*About page*/
 	
 	
 	.page__inner { background: none;
 		.main-header { height: 600px; background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat; }
 	};
-	.content_2cols { display: flex; }
+	.wrap__2cols { display: flex; }
+	.wrap__3cols {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
 	
 	.sec {
-		&-ttl {position: relative; font-family: $font-sansus; font-size: 44px; text-transform: uppercase; color: rgba(55, 62, 66, 255);
+		&-ttl {position: relative; margin: 0; font-family: $font-sansus; font-size: 44px; font-weight: normal; text-transform: uppercase; color: rgba(55, 62, 66, 255);
 			&::after {
 				content: "";
 				position: absolute;
@@ -87,7 +194,7 @@
 				background: rgba(55, 62, 66, 255);
 			}
 		}
-		&-subttl {position: relative; font-family: $font-sansus; font-size: 25px; text-transform: uppercase; color: rgba(86, 99, 88, 255);
+		&-subttl {position: relative; font-family: $font-sansus; font-size: 25px; font-weight: normal; text-transform: uppercase; color: rgba(86, 99, 88, 255);
 			&::after {
 				content: "";
 				position: absolute;
@@ -214,13 +321,7 @@
 	.circles .circle-90 { stroke-dasharray: 254.34 282.6; }
 	.circles .circle-95 { stroke-dasharray: 268.47 282.6; }
 	.circles .circle-100 { stroke-dasharray: 282.6 282.6; }
-	
-	.footer__main {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
+
 	
 	.note, .nav__footer, .cite { position: relative; width: 33.3%; text-align: left;
 		&::after {

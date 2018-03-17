@@ -74,7 +74,6 @@
 	@import '../assets/scss/variables';
 	
 	.page__blog {
-		.footer__main { position: relative; }
 		.content__main { display: flex; flex-wrap: wrap; padding: 60px 60px 0;}
 	}
 	.aside { width: 25%; padding: 0 30px; box-sizing: border-box; }

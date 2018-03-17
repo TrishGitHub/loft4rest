@@ -39,11 +39,11 @@
 									input(type="radio", name="sure")
 									input(type="radio", name="not-sure")
 							nav.main-nav
-							ul.nav-wrap
-								li(class="nav-item" @click="toFlip")
-									router-link(to='/', class="nav-link" ) На главную
-								li.nav-item
-									router-link(to='/admin', class="nav-link") Войти
+								ul.nav-wrap
+									li(class="nav-item" @click="toFlip")
+										router-link(to='/', class="nav-link" ) На главную
+									li.nav-item
+										router-link(to='/admin', class="nav-link") Войти
 </template>
 
 <script>
@@ -130,33 +130,6 @@
 			&:hover {background: $green-dark;}
 		}
 		&-link { display: flex; justify-content: center; align-items: center;  width: 100%; height: 100%; color: #fff; text-decoration: none;}
-	}
-	
-	.btn {
-		position: absolute;
-		top: 25px;
-		right: 5%;
-		padding: 10px 25px;
-		background: none repeat scroll 0 0 transparent;
-		border: 1px solid #fff;
-		border-spacing: 0;
-		border-radius: 20px;
-		color: #fff;
-		font-size: 16px;
-		font-weight: normal;
-		line-height: 1.42rem;
-		list-style: none outside none;
-		margin: 0;
-		text-align: left;
-		text-decoration: none;
-		text-indent: 0;
-		outline: none;
-		cursor: pointer;
-		transition: background .3s;
-		
-		&:hover {
-			background-color: rgba(255, 255, 255, .2);
-		}
 	}
 	
 	.login {
