@@ -1,6 +1,16 @@
 <template lang="pug">
 	.wrapper.page__inner.page__about
 		header.main-header
+			.header__top
+				ul.social-list
+					li.social-item
+						a.social-link.vk-ico вКонтакте
+					li.social-item
+						a.social-link.gt-ico Github
+					li.social-item
+						a.social-link.ln-ico Linkedin
+				div(class="burger-wrap" v-bind:class="{ 'burger-open': menuOpen }" @click="toOpenMenu")
+					i.burger-line
 			
 			section.sec__user
 				a(href="/", class="user-link")
@@ -130,9 +140,14 @@
         components: {
 	},
         name: 'AboutPage',
-        data () {
+        data() {
             return {
-                msg: ''
+                menuOpen: false,
+            }
+        },
+        methods: {
+            toOpenMenu(){
+                this.menuOpen = !this.menuOpen;
             }
         }
     }
@@ -143,7 +158,7 @@
 	@import '../assets/scss/normalize';
 	@import '../assets/scss/variables';
 	
-	.page__about {
+	.page__about { overflow-x: hidden;
 		.footer__main {
 			position: absolute;
 			left: 0;

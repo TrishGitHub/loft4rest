@@ -1,12 +1,22 @@
 <template lang="pug">
 	.wrapper.page__inner.page__works
 		header.main-header
+			.header__top
+				ul.social-list
+					li.social-item
+						a.social-link.vk-ico вКонтакте
+					li.social-item
+						a.social-link.gt-ico Github
+					li.social-item
+						a.social-link.ln-ico Linkedin
+				div(class="burger-wrap" v-bind:class="{ 'burger-open': menuOpen }" @click="toOpenMenu")
+					i.burger-line
 			section.sec__user
-				a(href="/", class="user-link")
-					.user-img
-						img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
-					h1.user-ttl Ира Нощенко
-					h2.user-subttl Личный сайт веб разработчика
+						a(href="/", class="user-link")
+							.user-img
+								img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
+							h1.user-ttl Ира Нощенко
+							h2.user-subttl Личный сайт веб разработчика
 		main.content__main.content__wide
 			h2.sec-ttl Мои работы
 			.wrap__3cols
@@ -105,9 +115,14 @@
 <script>
     export default {
         name: 'WorksPage',
-        data () {
+        data() {
             return {
-                msg: ''
+                menuOpen: false,
+            }
+        },
+        methods: {
+            toOpenMenu(){
+                this.menuOpen = !this.menuOpen;
             }
         }
     }

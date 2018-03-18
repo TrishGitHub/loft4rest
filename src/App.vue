@@ -36,12 +36,12 @@
     font-weight: normal;
     line-height: 1.42;
   }
-  
-  .wrapper {
-    min-height: 100%;
-    position: relative;
-    background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat;
-  }
+	
+	.wrapper {
+		min-height: 100%;
+		position: relative;
+		background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat;
+	}
   
   .page__inner { background: none;
 	  .main-header { display: flex; align-items: center; height: 600px; background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat; }
@@ -53,6 +53,39 @@
 	  .user-ttl, .user-subttl { margin: 0; }
 	  .user-ttl { font-size: 35px; }
   }
+	
+	.header__top {
+		display: flex;
+		justify-content: space-between;
+		position: absolute;
+		width: 100%;
+		top: 0;
+		padding: 20px;
+		box-sizing: border-box;
+		
+		.social {
+			&-list { display: flex; }
+			&-link { color: transparent; }
+		}
+	}
+	
+	.burger {
+		&-wrap { position: relative; width: 40px; height: 35px; cursor: pointer;}
+		&-line { display: block; width: 100%; height: 5px; position: absolute; top: 0; bottom: 0; margin: auto; background: #fff;
+			&::before, &::after { content: ""; position: absolute; width: 100%; height: 5px; display: block; background: #fff; transform-origin: center; }
+			&::before { transform: translateY(-15px); }
+			&::after { transform: translateY(15px);}
+		}
+		
+		&-open {
+			.burger {
+				&-line { background: transparent;
+					&::before {transform: translateY(0) rotate(45deg);}
+					&::after {transform: translateY(0) rotate(-45deg);}
+				}
+			}
+		}
+	}
   
   #app {
     height: 100%;
@@ -263,7 +296,11 @@
 			}
 		}
 		&__map { height: 1124px; background: url("./assets/images/bg/map.jpg") 50% 50% no-repeat; }
-		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .6); }
+		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .6);
+			.social {
+				&-list { display: block; height: auto; }
+			}
+		}
 		&__bottom { display: flex; flex-wrap: wrap; padding: 30px; color: #fff;  background: rgba(0, 0, 0, .6);
 			div:last-child::after { display: none; }
 		}
@@ -286,9 +323,7 @@
 	}
 	
 	.social {
-		&-list { padding-left: 0; font-family: $font-roboto; font-weight: 500; text-transform: none; text-align: left;
-		
-		}
+		&-list { padding-left: 0; font-family: $font-roboto; font-weight: 500; text-transform: none; text-align: left; }
 		&-item {padding: 15px 0;}
 		&-link {text-decoration: none; color: transparent;}
 	}

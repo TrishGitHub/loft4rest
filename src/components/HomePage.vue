@@ -10,7 +10,7 @@
 								img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
 							h1.user-ttl Ира Нощенко
 							h2.user-subttl Личный сайт веб разработчика
-							ul.social-wrap
+							ul.social-list
 								li.social-item
 									a.social-link.vk-ico вКонтакте
 								li.social-item
@@ -61,7 +61,6 @@
         },
 		methods: {
             toFlip(){
-                console.log(this.isFlipped);
                 this.isFlipped = !this.isFlipped;
                
 			}
@@ -114,7 +113,7 @@
 	.main-page .main-header { background: rgba(43, 65, 44, .6); }
 	
 	.social {
-		&-wrap { display: flex; width: 100%; height: 22px; }
+		&-list { display: flex; width: 100%; height: 22px; }
 		&-item { width: calc(100% / 3); color: transparent; }
 		&-link { width: 100%; height: 100%; display: block; }
 	}
