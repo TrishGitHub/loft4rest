@@ -44,11 +44,15 @@
     background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat;
   }
   
-  .page__inner {
+  .page__inner { background: none;
+	  .main-header { display: flex; align-items: center; height: 600px; background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat; }
 	  .social {
 		  &-item { width: 100%; }
 		  &-link { color: rgba(86, 99, 88, 255);}
 	  }
+	  .sec__user { width: auto; display: inline-block; margin: auto;}
+	  .user-ttl, .user-subttl { margin: 0; }
+	  .user-ttl { font-size: 35px; }
   }
   
   #app {
@@ -165,13 +169,7 @@
 			&:last-child { background: $green-dark; }
 		}
 	}
-	
-	/*About page*/
-	
-	
-	.page__inner { background: none;
-		.main-header { height: 600px; background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat; }
-	};
+
 	.wrap__2cols { display: flex; }
 	.wrap__3cols {
 		display: flex;
@@ -247,6 +245,21 @@
 			div:last-child::after { display: none; }
 		}
 		&__copy {padding: 10px; color: rgba(255, 255, 255, .6); background: rgba(100, 146, 87, .9); }
+		&__user { width: 100%; padding: 40px; box-sizing: border-box; color: #fff; }
+	}
+	
+	.user {
+		&-img { position: relative; display: block; width: 141px; height: 141px; margin: auto; border-radius: 50%; overflow: hidden; background: #ccc;
+			&-src {position: absolute; top: 0; left: 0; right: 0; width: 100%; margin: auto; display: block; }
+		}
+		
+		&-ttl { font-size: 28px; font-weight: 500; transition: color .25s; }
+		&-subttl {font-size: 16px; font-weight: normal; transition: color .25s;  }
+		&-link { display: block; color: #fff; text-decoration: none;
+			&:hover {
+				.user-ttl, .user-subttl { color: rgba(255, 255, 255, .8); }
+			}
+		}
 	}
 	
 	.social {

@@ -1,6 +1,12 @@
 <template lang="pug">
 	.wrapper.page__inner.page__blog
 		header.main-header
+			section.sec__user
+				a(href="/", class="user-link")
+					.user-img
+						img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
+					h1.user-ttl Ира Нощенко
+					h2.user-subttl Личный сайт веб разработчика
 		main.content__main
 			aside.aside
 				ul.post-list

@@ -5,11 +5,11 @@
 			.card-wrap
 				.flip-card(v-bind:class="{ 'is-flipped': isFlipped }")
 					.card-front
-						section.about
-							.about-img
-								img(src="../assets/images/content/Ira-Noschenko.jpg", class="about-img-src", alt="Ира Нощенко")
-							h1.about-ttl Ира Нощенко
-							h2.about-subttl Личный сайт веб разработчика
+						section.sec__user
+							.user-img
+								img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
+							h1.user-ttl Ира Нощенко
+							h2.user-subttl Личный сайт веб разработчика
 							ul.social-wrap
 								li.social-item
 									a.social-link.vk-ico вКонтакте
@@ -104,15 +104,6 @@
 	}
 	
 	.main-page .main-header { background: rgba(43, 65, 44, .6); }
-	
-	.about { width: 100%; padding: 40px; box-sizing: border-box;
-		&-img { position: relative; display: block; width: 141px; height: 141px; margin: auto; border-radius: 50%; overflow: hidden; background: #ccc;
-			&-src {position: absolute; top: 0; left: 0; right: 0; width: 100%; margin: auto; display: block; }
-		}
-		
-		&-ttl { font-size: 28px; font-weight: 500; }
-		&-subttl {font-size: 16px; }
-	}
 	
 	.social {
 		&-wrap { display: flex; width: 100%; height: 22px; }
