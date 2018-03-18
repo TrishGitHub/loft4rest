@@ -28,16 +28,21 @@
 					.card-back
 						section.login
 							.login-ttl Авторизируйтесь
-							form(class="form" name="login-form")
+							form(class="form form__login" name="login-form")
 								form-group
-									input(type="text", name="login", class="input-field")
-									input(type="password", name="password", class="input-field")
+									input(type="text", name="login", class="input-field", placeholder="Логин")
+									input(type="password", name="password", class="input-field", placeholder="Пароль")
 								form-group
-									input(type="checkbox", name="not-bot", id="not-bot")
-									label(class="label", for="not-bot") Я человек
+									input(type="checkbox", class="checkbox", name="not-bot", id="not-bot")
+									label(class="label label__checkbox", for="not-bot") Я человек
 									span Вы точно не робот?
-									input(type="radio", name="sure")
-									input(type="radio", name="not-sure")
+									.radio-wrap
+										form-group.group__radio
+											input(type="radio", class="radio", name="sure", id="sure")
+											label(class="label label__radio", for="sure") Да
+										form-group.group__radio
+											input(type="radio", class="radio", name="sure", id="notSure")
+											label(class="label label__radio", for="notSure") Не уверен
 							nav.main-nav
 								ul.nav-wrap
 									li(class="nav-item" @click="toFlip")
@@ -65,6 +70,9 @@
 </script>
 
 <style lang="scss">
+	
+	@import '../assets/scss/normalize';
+	@import '../assets/scss/variables';
 	
 	$green-light: #649257;
 	$green-dark: #487f39;
@@ -128,7 +136,24 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		
+		&-ttl {position: relative; padding: 20px; font-family: $font-sansus; font-size: 35px; text-transform: uppercase;
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 90px;
+				height: 3px;
+				margin: auto;
+				display: block;
+				background: #fff;
+			}
+		}
+		
 	}
+	.form__login { width: 90%; margin: auto; }
 	
 	form-group {
 		display: flex;

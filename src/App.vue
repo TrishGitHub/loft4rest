@@ -38,7 +38,6 @@
   }
   
   .wrapper {
-    overflow: hidden;
     min-height: 100%;
     position: relative;
     background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat;
@@ -91,6 +90,30 @@
 	.input-field::placeholder {
 		color: rgba(93, 90, 85, .5);
 	}
+	
+	.label__checkbox {
+		position: relative;
+		padding-left: 30px;
+		
+		&::before {
+			content: "\2714";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 21px;
+			height: 20px;
+			display: block;
+			background: #fff;
+		}
+	}
+	.checkbox { display: none; }
+	.checkbox:checked+label::before {
+		background: $green-dark;
+	}
+	
+	.group__radio {display: inline-block;  }
+	.radio-wrap { display: flex; }
   
   .content__wide {
 	  position: relative;
@@ -257,7 +280,7 @@
 		&-subttl {font-size: 16px; font-weight: normal; transition: color .25s;  }
 		&-link { display: block; color: #fff; text-decoration: none;
 			&:hover {
-				.user-ttl, .user-subttl { color: rgba(255, 255, 255, .8); }
+				.user-ttl, .user-subttl { color: rgba(255, 255, 255, .9); }
 			}
 		}
 	}

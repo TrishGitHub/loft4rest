@@ -1,6 +1,7 @@
 <template lang="pug">
 	.wrapper.page__inner.page__about
 		header.main-header
+			
 			section.sec__user
 				a(href="/", class="user-link")
 					.user-img
