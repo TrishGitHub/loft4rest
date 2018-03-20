@@ -34,6 +34,6 @@ export default new Router({
             path: '/admin',
             name: 'AdminPage',
             component: AdminPage
-        }
-    ]
-})
+        },
+    ],
+});

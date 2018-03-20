@@ -295,8 +295,8 @@
 				border-right: 50vw solid #f4f5f0;
 			}
 		}
-		&__map { height: 1124px; background: url("./assets/images/bg/map.jpg") 50% 50% no-repeat; }
-		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .6);
+		&__map { position: relative; height: 1124px; }
+		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .8);
 			.social {
 				&-list { display: block; height: auto; }
 			}
