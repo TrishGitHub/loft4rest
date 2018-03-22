@@ -136,10 +136,11 @@
 </template>
 
 <script>
-   
+    
     export default {
         components: {
-	},
+
+		},
         name: 'AboutPage',
         data() {
             return {
@@ -371,3 +372,5 @@
 		background: gray;
 	}
 </style>
+
+
