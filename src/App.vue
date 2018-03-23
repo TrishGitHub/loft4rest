@@ -37,6 +37,26 @@
     line-height: 1.42;
   }
 	
+  
+  .preloader-wrap {
+	  &.preloader-show { position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;
+		  .preloader-svg { display: block; width: 80px; height: 96px; fill: #fff; }
+	  }
+  }
+	
+	.preloader-svg { display: none; }
+	
+	#preloader-svg .wave-svg path {
+		stroke: #fff;
+		stroke-dasharray: 50;
+		stroke-dashoffset: 100;
+		animation: dasher 1s infinite;
+	}
+	
+	@keyframes dasher {
+		100% { stroke-dasharray: 100; }
+	};
+	
 	.wrapper {
 		min-height: 100%;
 		position: relative;
@@ -69,7 +89,7 @@
 		}
 	}
 	
-	.nav__burger { position: absolute; width: 100%; height: 100vh; display: flex; justify-content: center; z-index: 99;
+	.nav__burger { position: absolute; width: 100%; height: 100vh; display: flex; justify-content: center; z-index: 99; pointer-events: none;
 		&::before, &::after {
 			content: "";
 			position: fixed;
@@ -115,14 +135,14 @@
 	
 	.burger {
 		&-wrap { position: relative; width: 40px; height: 35px; cursor: pointer; z-index: 100;}
-		&-line { display: block; width: 100%; height: 5px; position: absolute; top: 0; bottom: 0; margin: auto; background: #fff;
-			&::before, &::after { content: ""; position: absolute; width: 100%; height: 5px; display: block; background: #fff; transform-origin: center; }
+		&-line { display: block; width: 100%; height: 5px; position: absolute; top: 0; bottom: 0; margin: auto; background: #fff;  border-radius: 10px;
+			&::before, &::after { content: ""; position: absolute; width: 100%; height: 5px; display: block; background: #fff; transform-origin: center; border-radius: 10px;}
 			&::before { transform: translateY(-15px); }
 			&::after { transform: translateY(15px);}
 		}
 		
 		&-open {
-			.nav__burger{
+			.nav__burger{ pointer-events: auto;
 				&::before, &::after { transform: translateX(0); transition: transform .8s 0s ease;}
 				.nav-wrap { opacity: 1; transition: opacity .5s .8s;}
 			}
