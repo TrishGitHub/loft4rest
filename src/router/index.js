@@ -6,6 +6,8 @@ import BlogPage from '@/components/BlogPage'
 import WorksPage from '@/components/WorksPage'
 import AdminPage from '@/components/AdminPage'
 
+import Carousel from '@/components/includes/Carousel'
+
 Vue.use(Router)
 
 export default new Router({
@@ -35,5 +37,10 @@ export default new Router({
             name: 'AdminPage',
             component: AdminPage
         },
+        {
+            path: '/carousel',
+            name: 'Carousel',
+            component: Carousel
+        }
     ],
 });

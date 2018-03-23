@@ -69,8 +69,52 @@
 		}
 	}
 	
+	.nav__burger { position: absolute; width: 100%; height: 100vh; display: flex; justify-content: center; z-index: 99;
+		&::before, &::after {
+			content: "";
+			position: fixed;
+			top: 0;
+			background: $green-light;
+			width: calc(50% + 1px);
+			height: 100%;
+			overflow: hidden;
+			opacity: .95;
+			transition: transform .8s .5s ease;
+		}
+		
+		&::before { left: 0; transform: translateX(-101%);}
+		
+		&:after { right: 0; transform: translateX(101%);}
+		
+		.nav {
+			&-wrap { position: relative; height: auto; display: block; padding-left: 0; padding-top: 10vh; opacity: 0; transition: opacity .5s 0s; z-index: 10;}
+			&-item {position: relative; height: auto; display: block; padding: 20px; background: none; border-right: none;
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: auto;
+					display: block;
+					background: #fff;
+					width: 100px;
+					height: 2px;
+					transform: scale(0);
+					transition: transform .5s ease;
+				}
+				
+				&:hover { background: none;
+					&::after { transform: scale(1); }
+				}
+				
+			}
+			&-link { height: auto; font-family: $font-sansus; text-transform: uppercase; font-size: 50px;}
+		}
+	}
+	
 	.burger {
-		&-wrap { position: relative; width: 40px; height: 35px; cursor: pointer;}
+		&-wrap { position: relative; width: 40px; height: 35px; cursor: pointer; z-index: 100;}
 		&-line { display: block; width: 100%; height: 5px; position: absolute; top: 0; bottom: 0; margin: auto; background: #fff;
 			&::before, &::after { content: ""; position: absolute; width: 100%; height: 5px; display: block; background: #fff; transform-origin: center; }
 			&::before { transform: translateY(-15px); }
@@ -78,10 +122,14 @@
 		}
 		
 		&-open {
+			.nav__burger{
+				&::before, &::after { transform: translateX(0); transition: transform .8s 0s ease;}
+				.nav-wrap { opacity: 1; transition: opacity .5s .8s;}
+			}
 			.burger {
-				&-line { background: transparent;
-					&::before {transform: translateY(0) rotate(45deg);}
-					&::after {transform: translateY(0) rotate(-45deg);}
+				&-line { background: transparent; border-radius: 10px;
+					&::before {transform: translateY(0) rotate(45deg); border-radius: 10px;}
+					&::after {transform: translateY(0) rotate(-45deg); border-radius: 10px;}
 				}
 			}
 		}

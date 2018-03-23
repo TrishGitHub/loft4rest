@@ -1,5 +1,15 @@
 <template lang="pug">
-	.wrapper.page__inner.page__works
+	.wrapper.page__inner.page__works(v-bind:class="{ 'burger-open': menuOpen }")
+		nav.nav__burger
+			ul.nav-wrap
+				li.nav-item
+					router-link(to='/works', class="nav-link") Мои работы
+				li.nav-item
+					router-link(to='/blog', class="nav-link") Блог
+				li.nav-item
+					router-link(to='/about', class="nav-link") Обо мне
+				li.nav-item
+					router-link(to='/', class="nav-link") Авторизация
 		header.main-header
 			.header__top
 				ul.social-list
@@ -9,7 +19,7 @@
 						a.social-link.gt-ico Github
 					li.social-item
 						a.social-link.ln-ico Linkedin
-				div(class="burger-wrap" v-bind:class="{ 'burger-open': menuOpen }" @click="toOpenMenu")
+				div(class="burger-wrap" @click="toOpenMenu")
 					i.burger-line
 			section.sec__user
 						a(href="/", class="user-link")
@@ -31,26 +41,25 @@
 						
 				section.sec__works
 					.works-item
-						CarouselItem
-						<!--#carousel(class="carousel-wrap")-->
-							<!--a(href='#')-->
-								<!--img#item-1(src='../assets/images/content/works/1.jpg', class="carousel-img", style='display: inline; left: 193px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')-->
-							<!--a(href='#')-->
-								<!--img#item-2(src='../assets/images/content/works/2.jpg', class="carousel-img carousel-center" style='display: inline; left: 320px; top: 60px; visibility: visible; position: absolute; z-index: 5; opacity: 1; width: 320px; height: 360px;')-->
-							<!--a(href='#')-->
-								<!--img#item-3(src='../assets/images/content/works/3.jpg', class="carousel-img" style='display: inline; left: 543px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')-->
-							<!--a(href='#')-->
-								<!--img#item-4(src='../assets/images/content/works/4.jpg', class="carousel-img" style='display: inline; left: 681.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')-->
-							<!--a(href='#')-->
-								<!--img#item-5(src='../assets/images/content/works/5.jpg', class="carousel-img" style='display: inline; left: 768.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')-->
-							<!--a(href='#')-->
-								<!--img#item-6(src='../assets/images/content/works/6.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')-->
-							<!--a(href='#')-->
-								<!--img#item-7(src='../assets/images/content/works/7.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')-->
-							<!--a(href='#')-->
-								<!--img#item-8(src='../assets/images/content/works/8.jpg', class="carousel-img" style='display: inline; left: 82.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')-->
-							<!--a(href='#')-->
-								<!--img#item-9(src='../assets/images/content/works/9.jpg', class="carousel-img" style='display: inline; left: 121.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')-->
+						#carousel(class="carousel-wrap")
+							a(href='#')
+								img#item-1(src='../assets/images/content/works/1.jpg', class="carousel-img", style='display: inline; left: 193px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')
+							a(href='#')
+								img#item-2(src='../assets/images/content/works/2.jpg', class="carousel-img carousel-center" style='display: inline; left: 320px; top: 60px; visibility: visible; position: absolute; z-index: 5; opacity: 1; width: 320px; height: 360px;')
+							a(href='#')
+								img#item-3(src='../assets/images/content/works/3.jpg', class="carousel-img" style='display: inline; left: 543px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')
+							a(href='#')
+								img#item-4(src='../assets/images/content/works/4.jpg', class="carousel-img" style='display: inline; left: 681.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')
+							a(href='#')
+								img#item-5(src='../assets/images/content/works/5.jpg', class="carousel-img" style='display: inline; left: 768.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')
+							a(href='#')
+								img#item-6(src='../assets/images/content/works/6.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')
+							a(href='#')
+								img#item-7(src='../assets/images/content/works/7.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')
+							a(href='#')
+								img#item-8(src='../assets/images/content/works/8.jpg', class="carousel-img" style='display: inline; left: 82.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')
+							a(href='#')
+								img#item-9(src='../assets/images/content/works/9.jpg', class="carousel-img" style='display: inline; left: 121.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')
 			
 				.control-wrap
 							.control-item
@@ -80,11 +89,11 @@
 				section.sec__contacts
 					h3.sec-subttl Связаться со мной
 					form(class="form" name="contact-form")
-						form-group
+						.form-group
 							input(type="text", name="login", class="input-field", placeholder="Имя")
 							input(type="password", name="password", class="input-field" , placeholder="Email")
 							textarea(rows="5", class="input-field", placeholder="Ваше сообщение")
-						form-group(class="btn_group")
+						.form-group(class="btn_group")
 							button(type='submit', value='Submit', class="btn btn__green") Отправить
 							button(type='reset', value='Reset', class="btn btn__green") Очистить
 
@@ -114,12 +123,11 @@
 </template>
 
 <script>
-    import CarouselItem from './includes/CarouselItem';
-    
+   
     export default {
         name: 'WorksPage',
         components: {
-            'CarouselItem': CarouselItem,
+        
         },
         data() {
             return {

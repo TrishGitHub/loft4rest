@@ -1,5 +1,15 @@
 <template lang="pug">
-	.wrapper.page__inner.page__about
+	.wrapper.page__inner.page__about(v-bind:class="{ 'burger-open': menuOpen }")
+		nav.nav__burger
+			ul.nav-wrap
+				li.nav-item
+					router-link(to='/works', class="nav-link") Мои работы
+				li.nav-item
+					router-link(to='/blog', class="nav-link") Блог
+				li.nav-item
+					router-link(to='/about', class="nav-link") Обо мне
+				li.nav-item
+					router-link(to='/', class="nav-link") Авторизация
 		header.main-header
 			.header__top
 				ul.social-list
