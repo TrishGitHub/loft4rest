@@ -70,10 +70,14 @@
 		  &.fb-ico { width: 12px; height: 25px; }
 		  &.gh-ico { top: 4px; width: 26px; height: 22px; }
 		  &.in-ico { width: 24px; height: 23px; }
+		  &.skype-ico { width: 24px; height: 24px; }
+		  &.mail-ico { width: 22px; height: 18px; }
+		  &.phone-ico { width: 19px; height: 19px; }
+		  &.marker-ico { width: 16px; height: 22px; }
 	  }
 	  .sec__user { width: auto; display: inline-block; margin: auto;}
 	  .user-ttl, .user-subttl { margin: 0; }
-	  .user-ttl { font-size: 35px; }
+	  .user-ttl { font-size: 2.188rem; }
   }
 	
 	.header__top {
@@ -319,7 +323,7 @@
 				background: rgba(55, 62, 66, 255);
 			}
 		}
-		&-subttl {position: relative; font-family: $font-sansus; font-size: 25px; font-weight: normal; text-transform: uppercase; color: rgba(86, 99, 88, 255);
+		&-subttl {position: relative; font-family: $font-sansus; font-size: 2.188rem; font-weight: normal; text-transform: uppercase; color: rgba(86, 99, 88, 255);
 			&::after {
 				content: "";
 				position: absolute;
@@ -334,7 +338,7 @@
 			}
 		}
 		&-txt {text-align: left; color: rgba(86, 99, 88, 255);}
-		&-img img { width: 100%; }
+		&-img img { width: 90%; padding-bottom: 20px; }
 		&__about { position: relative; display: flex; width: 50%; padding: 20px; background: #ebefe2;
 			&::before {
 				content: "";
@@ -351,7 +355,7 @@
 			}
 			.sec-head, .sec-body { width: 50%; }
 		}
-		&__skills { position: relative; width: 50%; padding: 20px; background: #f4f5f0;
+		&__skills { position: relative; width: 50%; padding: 20px 20px 20px 40px; background: #f4f5f0;
 			&::after {
 				content: "";
 				position: absolute;
@@ -365,12 +369,21 @@
 				border-top-width: 150px;
 				border-right: 50vw solid #f4f5f0;
 			}
+			
+			.sec-subttl { width: 35%; margin: auto; }
 		}
 		&__map { position: relative; height: 1124px; }
 		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .8);
 			.social {
-				&-item { width: 100%; }
+				&-item { position: relative;  display: flex; align-items: center; width: 100%; padding: 10px 0 10px 40px;
+					&:hover {
+						.social-svg { fill: $green-dark; }
+					}
+				}
 				&-list { display: block; height: auto; }
+				&-svg {right: initial; fill: $green-light;
+					&:hover { fill: $green-dark; }
+				}
 			}
 		}
 		&__bottom { display: flex; flex-wrap: wrap; padding: 30px; color: #fff;  background: rgba(0, 0, 0, .6);
@@ -401,11 +414,11 @@
 	}
 	
 	.skill{
-		&-list {font-size: 22px; padding-left: 0; font-weight: 600; text-align: left; color: rgba(86, 99, 88, 255);}
+		&-list {font-size: 1.75rem; padding: 16px 0 0; font-weight: 600; text-align: left; color: rgba(86, 99, 88, 255);}
 		&-item {
 			position: relative;
 			display: inline-block;
-			padding: 10px 10px 10px 0;
+			padding: 10px 7% 10px 0;
 			height: 110px;
 			width: 110px;
 			
@@ -422,7 +435,7 @@
 			align-items: center;
 			text-align: center;
 			font-size: 11px;
-			padding-right: 10px;
+			padding-right: 30%;
 			color: rgba(78, 136, 57, 255);
 			pointer-events: none;
 		}
