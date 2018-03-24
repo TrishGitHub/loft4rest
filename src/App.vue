@@ -510,6 +510,29 @@
 		&-link { display: block; color: #fff; text-decoration: none; }
 	}
 	
+	.arrow-bounce { display: none; position: absolute; left: 0; right: 0; bottom: 30px; margin: auto;     animation: bounce 2s infinite;
+		&:hover {
+			opacity: .6;
+			animation: none; }
+	}
+	.arrow-down-svg { width: 26px; height: 26px; fill: #fff; opacity: .6}
+	
+	@keyframes bounce {
+		0%,
+		20%,
+		50%,
+		80%,
+		to {
+			-webkit-transform: translateY(0);
+			transform: translateY(0); }
+		40% {
+			-webkit-transform: translateY(-30px);
+			transform: translateY(-30px); }
+		60% {
+			-webkit-transform: translateY(-15px);
+			transform: translateY(-15px); }
+	}
+	
 @media screen and (max-width: 1366px) {
 	.content__wide {
 		&::before, &::after {
@@ -522,7 +545,7 @@
 @media screen and (max-width: 1024px) {
 	html, body {font-size: 14px;}
 	.page__inner {
-		.main-header { height: 500px; }
+		.main-header { position: relative; height: 500px; }
 	}
 	.cite { width: 100%; padding: 0; font-size: 13px; }
 	.note, .nav__footer { width: 50%;  }
@@ -533,7 +556,8 @@
 		}
 	}
 	.burger-wrap { transform: scale(.8); }
-
+	.arrow-bounce { display: block; }
+	
 }
 
 @media screen and (max-width: 600px) {

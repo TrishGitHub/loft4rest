@@ -30,11 +30,15 @@
 					i.burger-line
 	
 			section.sec__user
-						a(href="/", class="user-link")
-							.user-img
-								img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
-							h1.sec-ttl Блог
-							h2.sec-txt Статьи, которые я написала
+				a(href="/", class="user-link")
+					.user-img
+						img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
+					h1.sec-ttl Блог
+					h2.sec-txt Статьи, которые я написала
+			.arrow-bounce
+				svg(class="arrow-down-svg")
+					use(xlink:href='#arrow-down-svg' width="26px" height="26px")
+				
 		main.content__main.content__wide
 			aside.aside(@click="toOpenAside")
 				ul.post-list
@@ -136,6 +140,10 @@
 				g.wave-svg
 					path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,85.362c6.663,0,6.663,7.801,13.327,7.801   c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801   c6.67,0,6.67,7.801,13.339,7.801S73.33,85.362,80,85.362')
 				text(transform='matrix(1 0 0 1 19.9785 20.5957)', font-family="'ArialMT'", font-size='24') 100
+				
+			symbol#arrow-down-svg(viewBox="0 0 25.18 16.164")
+				path(d='M13.293,15.871c-0.391,0.391-1.016,0.391-1.406,0L0.293,4.293c-0.391-0.391-0.391-1.031,0-1.422   l2.594-2.578c0.391-0.391,1.016-0.391,1.406,0L12.59,8.59l8.297-8.297c0.391-0.391,1.016-0.391,1.406,0l2.594,2.578   c0.391,0.391,0.391,1.031,0,1.422L13.293,15.871z')
+
 </template>
 
 <script>
@@ -267,7 +275,7 @@
 @media screen and (max-width: 1024px) {
 	.page__blog {
 		.sec__blog { width: 100%; padding: 0; }
-		.aside { position: absolute; width: 300px; height: 100vh; transform: translateX(-111%); background: #487f39; color: #fff; z-index: 5; transition: transform .8s ease;
+		.aside { position: absolute; width: 300px; height: 100vh; transform: translateX(-111%); background: $green-light; color: #fff; z-index: 5; transition: transform .8s ease;
 			&.aside__open {transform: translateX(-10%);}
 			&::before {
 				content: "";
@@ -280,7 +288,7 @@
 				height: 50px;
 				border-radius: 100%;
 				display: block;
-				background: $green-dark;
+				background: $green-light;
 				cursor: pointer;
 			}
 		}
