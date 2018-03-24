@@ -203,7 +203,7 @@
 	.sec {
 		&__site, &__works { width: 50%; }
 		&__site { display: flex; align-items: center; height: 100%; background: #ebefe2;}
-		&__works { height: 70%; overflow: hidden; background: #e1e4d7;}
+		&__works { height: 70%; background: #e1e4d7;}
 		&__review {min-height: 1200px; background: url("../assets/images/bg/forest.png") no-repeat; }
 	}
 	.site {
@@ -220,7 +220,7 @@
 		&-item { min-height: 525px; }
 	}
 	
-	.carousel {
+	#carousel { display: none;
 		&-wrap { position: relative; height: 100%; }
 		&-img {box-shadow: 0px 15px 10px -15px #111;}
 	}
@@ -272,6 +272,16 @@
 		.sec__site { order: 2; }
 		.control-wrap { height: 233px; order: 3;}
 		.review-wrap { width: 100%; }
+	
+	}
+	
+	@media screen and (max-width: 600px) {
+		.page__works {
+			.sec__contacts { margin: auto;}
+		}
+		.review-wrap { flex-direction: column; }
+		.site-item { padding: 10% 0; }
+		.sec__review { min-height: 1600px; background-position: 0 100%; }
 	
 	}
 	
