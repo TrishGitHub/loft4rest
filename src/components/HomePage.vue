@@ -153,13 +153,13 @@
 	.main-page .main-header { background: rgba(43, 65, 44, .6); }
 	
 	.social {
-		&-wrap { display: flex; width: 50%; height: 22px; margin: auto; padding-left: 0; }
-		&-item { position: relative; width: calc(100% / 3); color: transparent;
+		&-wrap { display: flex; width: 50%; height: 36px; margin: auto; padding-left: 0; }
+		&-item { position: relative; width: calc(100% / 3); height: 100%; padding: 0; color: transparent;
 			&:hover {
 				.social-svg { fill: $green-dark; }
 			}
 		}
-		&-link { width: 100%; height: auto; display: block; }
+		&-link { width: 100%; height: 100%; display: block; }
 		&-svg {
 			position: absolute;
 			top: 0;
@@ -171,6 +171,10 @@
 			height: 30px;
 			fill: #8e9d98;
 			transition: fill .5s ease;
+			
+			&.fb-ico { width: 12px; height: 25px; }
+			&.gh-ico { top: 4px; width: 26px; height: 22px; }
+			&.in-ico { width: 24px; height: 23px; }
 		}
 	}
 	

@@ -68,7 +68,7 @@
 		  &:hover { fill: $green-dark; }
 		
 		  &.fb-ico { width: 12px; height: 25px; }
-		  &.gh-ico { top: 2px; width: 26px; height: 22px; }
+		  &.gh-ico { top: 4px; width: 26px; height: 22px; }
 		  &.in-ico { width: 24px; height: 23px; }
 	  }
 	  .sec__user { width: auto; display: inline-block; margin: auto;}
