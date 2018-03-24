@@ -209,15 +209,6 @@
 				path(d='M7.574,21.654l1.388-1.817c1.455-1.925,6.189-8.469,6.189-12.049C15.151,3.132,12.106,0,7.574,0   C3.045,0,0,3.132,0,7.788c0,3.854,5.56,11.223,6.192,12.049L7.574,21.654z M2.792,7.835c0-2.628,2.146-4.77,4.782-4.77   c2.64,0,4.785,2.142,4.785,4.77c0,2.63-2.146,4.771-4.785,4.771C4.938,12.605,2.792,10.465,2.792,7.835z')
 
 
-
-
-
-
-
-
-
-
-
 </template>
 
 <script>
@@ -457,6 +448,47 @@
 		height: 100%;
 		margin: 0 auto;
 		background: gray;
+	}
+	
+	
+	@media screen and (max-width: 1366px) {
+		.sec__about { flex-direction: column;
+			.sec-head, .sec-body { width: 80%; margin: auto; }
+			.sec-head { margin: -10px auto 40px; }
+		}
+		
+		.sec__skills .sec-subttl { width: 59%; }
+		.skill {
+			&-item {padding: 10px 4% 10px 0;}
+			&-ttl { padding-right: 15%; }
+		}
+		
+		.page__inner {
+			.sec__user { transform: translateY(-50px); }
+			.page__inner .user-ttl { padding-top: 30px; }
+		}
+	
+	}
+	@media screen and (max-width: 1024px) {
+		.page__about .main-header { height: 500px; }
+		.page__inner .sec__user { transform: translateY(0); }
+		.sec__about { box-sizing: border-box;
+			.sec-body { width: 60%; box-sizing: border-box;}
+		}
+		
+		.skill-list { box-sizing: border-box; text-align: center; }
+		
+	}
+	
+	@media screen and (max-width: 600px) {
+		.sec__about {
+			.sec-img { width: 130%; margin-left: -15%; }
+			.sec-body { width: 100%; }
+		}
+		.sec__skills {
+			.sec-subttl { width: 84%; }
+			.sec-txt { width: 100%; }
+		}
 	}
 </style>
 
