@@ -17,15 +17,15 @@
 								h2.user-subttl Личный сайт веб разработчика
 								ul.social-wrap
 									li.social-item
-										a(href="https://www.facebook.com/Ira.Noshchenko", class="social-link") Facebook
+										a(href="https://www.facebook.com/Ira.Noshchenko", class="social-link", target="_blank") Facebook
 											svg(class="social-svg fb-ico")
 												use(xlink:href='#fb-svg' width="12px" height="25px")
 									li.social-item
-										a(href="https://github.com/TrishGitHub", class="social-link") Github
+										a(href="https://github.com/TrishGitHub", class="social-link", target="_blank") Github
 											svg(class="social-svg gh-ico")
 												use(xlink:href='#git-svg' width="26px" height="22px")
 									li.social-item
-										a(href="https://www.linkedin.com/in/ira-noschenko-12032a10b/", class="social-link") Linkedin
+										a(href="https://www.linkedin.com/in/ira-noschenko-12032a10b/", class="social-link", target="_blank") Linkedin
 											svg(class="social-svg in-ico")
 												use(xlink:href='#in-svg' width="24px" height="23px")
 							nav.main-nav

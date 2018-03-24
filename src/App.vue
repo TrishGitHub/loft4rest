@@ -178,6 +178,7 @@
 	
 	.form-group {
 		display: block;
+		&.btn_group { flex-direction: row; }
 	}
 	
 	.input-field {
@@ -338,7 +339,7 @@
 			&::before {
 				content: "";
 				position: absolute;
-				top: -150px;
+				top: -149px;
 				left: 0;
 				display: block;
 				width: 0;
@@ -354,7 +355,7 @@
 			&::after {
 				content: "";
 				position: absolute;
-				top: -150px;
+				top: -149px;
 				left: 0;
 				display: block;
 				width: 0;
@@ -368,6 +369,7 @@
 		&__map { position: relative; height: 1124px; }
 		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .8);
 			.social {
+				&-item { width: 100%; }
 				&-list { display: block; height: auto; }
 			}
 		}
@@ -488,7 +490,7 @@
 	.nav {
 		&__footer {
 			.nav-item, .nav-item:hover { background: none; border: none; }
-			.nav-item { flex-grow: initial; padding: 0 2%; font-size: 15px;}
+			.nav-item { flex-grow: initial; padding: 0 10px; font-size: 15px;}
 			.social {
 				&-item {position: relative;}
 				&-list { display: flex; width: 150px; justify-content: space-between; }
@@ -535,7 +537,32 @@
 }
 
 @media screen and (max-width: 600px) {
-
+	.note, .nav__footer { width: 100%; }
+	.nav__footer { padding: 10px 0;
+		.nav {
+			&-list {justify-content: space-between;}
+			&-item { padding: 0; font-size: 1rem; }
+		}
+		.social{
+			&-list { width: 100%; justify-content: center; }
+			&-item { padding: 0 10px; }
+		}
+	}
+	.cite { padding-top: 10px; text-align: center; line-height: 1.6;}
+	.note { padding-bottom: 10px; text-align: center; }
+	
+	.note::after, .nav__footer::after {
+		content: "";
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		width: 100%;
+		display: block;
+		background: rgba(255, 255, 255, 0.4);
+	}
 }
 
 
