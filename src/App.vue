@@ -373,7 +373,7 @@
 			.sec-subttl { width: 35%; margin: auto; }
 		}
 		&__map { position: relative; height: 1124px; }
-		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .8);
+		&__contacts { position: absolute; left: 0; right: 0; bottom: 500px; width: 300px; margin: auto; padding: 40px; background: rgba(255, 255, 255, .4);
 			.social {
 				&-item { position: relative;  display: flex; align-items: center; width: 100%; padding: 10px 0 10px 40px;
 					&:hover {

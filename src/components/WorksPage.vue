@@ -34,6 +34,9 @@
 								img(src="../assets/images/content/Ira-Noschenko.jpg", class="user-img-src", alt="Ира Нощенко")
 							h1.user-ttl Ира Нощенко
 							h2.user-subttl Личный сайт веб разработчика
+			.arrow-bounce
+				svg(class="arrow-down-svg")
+					use(xlink:href='#arrow-down-svg' width="26px" height="26px")
 		main.content__main.content__wide
 			h2.sec-ttl Мои работы
 			.wrap__3cols
@@ -158,6 +161,9 @@
 				g.wave-svg
 					path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,85.362c6.663,0,6.663,7.801,13.327,7.801   c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801   c6.67,0,6.67,7.801,13.339,7.801S73.33,85.362,80,85.362')
 				text(transform='matrix(1 0 0 1 19.9785 20.5957)', font-family="'ArialMT'", font-size='24') 100
+				
+			symbol#arrow-down-svg(viewBox="0 0 25.18 16.164")
+				path(d='M13.293,15.871c-0.391,0.391-1.016,0.391-1.406,0L0.293,4.293c-0.391-0.391-0.391-1.031,0-1.422   l2.594-2.578c0.391-0.391,1.016-0.391,1.406,0L12.59,8.59l8.297-8.297c0.391-0.391,1.016-0.391,1.406,0l2.594,2.578   c0.391,0.391,0.391,1.031,0,1.422L13.293,15.871z')
 </template>
 
 <script>
@@ -186,16 +192,18 @@
 	@import '../assets/scss/variables';
 	
 	.page__works {
+		.main-header { position: relative; }
 		.footer__main { position: absolute; left: 0; right: 0; bottom: 0; }
 		.sec-ttl { margin: 0 0 50px; padding-top: 20px; }
 		.wrap__3cols { height: 750px; }
-		.sec__contacts { position: initial; margin: 50px auto; padding: 20px 20px 60px; }
+		.sec__contacts { position: relative; bottom: 0; margin: 50px auto; padding: 20px 20px 60px; }
+		.arrow-bounce { display: block; }
 	}
 	
 	.sec {
 		&__site, &__works { width: 50%; }
 		&__site { display: flex; align-items: center; height: 100%; background: #ebefe2;}
-		&__works { height: 70%; background: #e1e4d7;}
+		&__works { height: 70%; overflow: hidden; background: #e1e4d7;}
 		&__review {min-height: 1200px; background: url("../assets/images/bg/forest.png") no-repeat; }
 	}
 	.site {
@@ -226,7 +234,7 @@
 		&-wrap {display: flex; justify-content: center; width: 50%; margin: auto; }
 		&-item { padding: 30px; }
 		&-img {
-			position: relative;
+			position: sticky;
 			display: block;
 			width: 80px;
 			height: 80px;
@@ -245,10 +253,26 @@
 				display: block;
 			}
 		}
-		&-txt { padding: 20px 0; text-align: left; }
-		&-author { color: $green-dark;
+		&-txt { font-family: $font-roboto-i; padding: 20px 0; text-align: left; }
+		&-author { font-family: $font-roboto-i; color: $green-dark;
 			span { display: block; color: initial; }
 		}
+	}
+	
+	@media screen and (max-width: 1366px) {
+		.btn__green { margin: auto; }
+		.review-wrap {width: 70%; }
+	
+	}
+	
+	@media screen and (max-width: 1024px) {
+		.page__works .wrap__3cols { flex-direction: row; height: auto; }
+		.sec__site, .sec__works, .control-wrap { width: 100%; height: auto; }
+		.sec__works { order: 1; }
+		.sec__site { order: 2; }
+		.control-wrap { height: 233px; order: 3;}
+		.review-wrap { width: 100%; }
+	
 	}
 	
 </style>
