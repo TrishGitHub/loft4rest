@@ -36,7 +36,7 @@
 							h1.sec-ttl Блог
 							h2.sec-txt Статьи, которые я написала
 		main.content__main.content__wide
-			aside.aside
+			aside.aside(@click="toOpenAside")
 				ul.post-list
 					li.post-link.post-link__active(data-post="0")
 						a(href="", class="post-src") Самое важное в SASS
@@ -150,14 +150,27 @@
             toOpenMenu(){
                 this.menuOpen = !this.menuOpen;
             },
-            handleScroll: function (event) {
+            toOpenAside(){
+                const aside = document.getElementsByClassName('aside')[0],
+                    windowWidth = window.innerWidth;
+                
+                if(windowWidth <= 1024) {
+                    aside.classList.toggle('aside__open');
+                }
+			},
+            handleScroll(event) {
                 const scrollTop = document.documentElement.scrollTop,
 					  blogTop = document.getElementsByClassName('sec__blog')[0].offsetTop + window.innerHeight / 2,
 			  		  content = document.getElementsByClassName('content__main')[0],
 					  posts = document.getElementsByClassName('post-item'),
-					  postLinks = document.getElementsByClassName('post-link');
+					  postLinks = document.getElementsByClassName('post-link'),
+					  contentSticked = document.getElementsByClassName('content__main')[0],
+					  aside = document.getElementsByClassName('aside')[0];
 
-                scrollTop >= blogTop ? content.classList.add("content__sticked"): content.classList.remove("content__sticked");
+                scrollTop >= blogTop ? content.classList.add("content__sticked"): content.classList.remove('content__sticked');
+                if (!contentSticked.classList.contains('content__sticked')) {
+                    aside.classList.remove('aside__open');
+				};
                 
                 for(var i=0; i < posts.length; i++) {
                     const postPos = posts[i].offsetTop + posts[i].scrollHeight /2;
@@ -172,9 +185,11 @@
 				}
 				
             },
+            handleResize(event){},
         },
         created: function () {
             window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('resize', this.handleResize);
         },
     }
 </script>
@@ -186,11 +201,15 @@
 	@import '../assets/scss/variables';
 	
 	.page__blog {
-		.content__main { display: flex; flex-wrap: wrap; padding: 30px 60px 0;}
+		.content__main { display: flex; flex-wrap: wrap; padding: 30px 60px 0; background: #faf8f0; }
+		.content__wide {
+			&::before { border-left: 50vw solid #faf8f0;}
+			&::after { border-right: 50vw solid #faf8f0; }
+		}
 		.sec {
 			&-ttl, &-txt { color: #fff; }
 			&-ttl::after { bottom: -20px; background: #fff; }
-			&-txt { transform: translateY(36px); font-size: 16px; font-weight: 400; }
+			&-txt { transform: translateY(36px); font-size: 1rem; font-weight: 400; }
 		}
 	}
 	
@@ -224,11 +243,11 @@
 			}
 		}
 		&-src { text-decoration: none; color: inherit; }
-		&-ttl { margin: 25px 0 10px; font-family: $font-sansus; font-size: 35px; color: rgba(69, 90, 100, 255);     font-weight: normal; }
+		&-ttl { margin: 25px 0 10px; font-family: $font-sansus; font-size: 2.188rem; color: rgba(69, 90, 100, 255);     font-weight: normal; }
 		&-date { color: $green-light; }
 	}
 	
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
 	.page__blog {
 		.content {
 			&__main { padding: 30px;}
@@ -243,6 +262,44 @@
 		}
 		
 	}
+}
+	
+@media screen and (max-width: 1024px) {
+	.page__blog {
+		.sec__blog { width: 100%; padding: 0; }
+		.aside { position: absolute; width: 300px; height: 100vh; transform: translateX(-111%); background: #487f39; color: #fff; z-index: 5; transition: transform .8s ease;
+			&.aside__open {transform: translateX(-10%);}
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: -20px;
+				margin: auto;
+				width: 50px;
+				height: 50px;
+				border-radius: 100%;
+				display: block;
+				background: $green-dark;
+				cursor: pointer;
+			}
+		}
+		.post {
+			&-list { padding-right: 20px;}
+			&-link__active { color: #fff;
+				&::after { background: #fff;}
+			}
+		}
+		
+		.content__sticked {
+			.aside { position: fixed; }
+			.sec__blog { transform: translateX(0);}
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+
 }
 
 

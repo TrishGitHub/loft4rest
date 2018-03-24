@@ -21,23 +21,18 @@
 	@import './assets/scss/normalize';
 	@import './assets/scss/fonts';
 	@import './assets/scss/variables';
-  
-  
-  body, html {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.42;
-  }
 	
-  
+	body, html {
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		font-family: 'Roboto', sans-serif;
+		font-size: 16px;
+		font-weight: normal;
+		line-height: 1.42;
+	}
+
   .preloader-wrap {
 	  &.preloader-show { position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;
 		  .preloader-svg { display: block; width: 80px; height: 96px; fill: #fff; }
@@ -136,7 +131,7 @@
 				}
 				
 			}
-			&-link { height: auto; font-family: $font-sansus; text-transform: uppercase; font-size: 50px;}
+			&-link { height: auto; font-family: $font-sansus; text-transform: uppercase; font-size: 3.125rem;}
 		}
 	}
 	
@@ -309,7 +304,7 @@
 	}
 	
 	.sec {
-		&-ttl {position: relative; margin: 0; font-family: $font-sansus; font-size: 62px; font-weight: normal; text-transform: uppercase; color: rgba(55, 62, 66, 255);
+		&-ttl {position: relative; margin: 0; font-family: $font-sansus; font-size: 3.875rem; font-weight: normal; text-transform: uppercase; color: rgba(55, 62, 66, 255);
 			&::after {
 				content: "";
 				position: absolute;
@@ -510,10 +505,10 @@
 			padding-left: 0;
 		}
 		&-item { padding: 0 20px;}
-		&-link { color: #fff; text-decoration: none; }
+		&-link { display: block; color: #fff; text-decoration: none; }
 	}
 	
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
 	.content__wide {
 		&::before, &::after {
 			top: -107px; border-top-width: 108px;
@@ -522,6 +517,26 @@
 	.note { padding-right: 5% }
 }
 
+@media screen and (max-width: 1024px) {
+	html, body {font-size: 14px;}
+	.page__inner {
+		.main-header { height: 500px; }
+	}
+	.cite { width: 100%; padding: 0; font-size: 13px; }
+	.note, .nav__footer { width: 50%;  }
+	.nav__footer::after { display: none; }
+	.content__wide {
+		&::before, &::after {
+			top: -62px; border-top-width: 63px;
+		}
+	}
+	.burger-wrap { transform: scale(.8); }
+
+}
+
+@media screen and (max-width: 600px) {
+
+}
 
 
 </style>

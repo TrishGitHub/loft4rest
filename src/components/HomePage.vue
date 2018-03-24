@@ -1,9 +1,9 @@
 <template lang="pug">
 	.wrapper
-		.preloader-wrap(v-bind:class="{'preloader-show': 'preloder' }")
-			.preloader
-				svg(class="preloader-svg")
-					use(xlink:href='#preloader-svg' width="80px" height="96px")
+		<!--.preloader-wrap(v-bind:class="{'preloader-show': 'preloder' }")-->
+			<!--.preloader-->
+				<!--svg(class="preloader-svg")-->
+					<!--use(xlink:href='#preloader-svg' width="80px" height="96px")-->
 		.main-page
 			button(class="btn" @click="toFlip") Авторизироваться
 			header(class="main-header")
@@ -18,16 +18,16 @@
 								ul.social-wrap
 									li.social-item
 										a(href="https://www.facebook.com/Ira.Noshchenko", class="social-link") Facebook
-											svg(class="social-svg")
-												use(xlink:href='#fb-svg' width="100%" height="100%")
+											svg(class="social-svg fb-ico")
+												use(xlink:href='#fb-svg' width="12px" height="25px")
 									li.social-item
 										a(href="https://github.com/TrishGitHub", class="social-link") Github
-											svg(class="social-svg")
-												use(xlink:href='#git-svg' width="100%" height="100%")
+											svg(class="social-svg gh-ico")
+												use(xlink:href='#git-svg' width="26px" height="22px")
 									li.social-item
 										a(href="https://www.linkedin.com/in/ira-noschenko-12032a10b/", class="social-link") Linkedin
-											svg(class="social-svg")
-												use(xlink:href='#in-svg' width="100%" height="100%")
+											svg(class="social-svg in-ico")
+												use(xlink:href='#in-svg' width="24px" height="23px")
 							nav.main-nav
 								ul.nav-wrap
 									li.nav-item
@@ -86,7 +86,7 @@
         data() {
             return {
                 isFlipped: false,
-				preloader: true
+				preloader: false,
             }
         },
         mounted: function () {
@@ -97,7 +97,7 @@
                     this.preloader = false;
                     console.log(preloader);
                     }, 1000);
-            })
+            });
         },
 		methods: {
             toFlip(){
