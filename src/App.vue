@@ -187,41 +187,79 @@
 	
 	.input-field {
 		width: 100%;
+		height: 45px;
 		box-sizing: border-box;
 		margin: 5px 0;
-		padding: 10px 20px;
+		padding: 10px 20px 10px 60px;
 		border: none;
 		outline: none;
 		border-radius: 20px;
+		color: initial;
+		box-sizing: border-box;
 	}
+	
+	.input-ico {
+		position: absolute;
+		left: 0;
+		width: 45px;
+		height: 45px;
+		display: block;
+		background: #f0efe9;
+		border-bottom-left-radius: 20px;
+		border-top-left-radius: 20px;
+		pointer-events: none;
+	}
+	
+	.input-ico__login { top: 25px; background: #f0efe9 url('./assets/images/icons/login.png') 50% 50% no-repeat; background-size: 30%; }
+	.input-ico__pass { top: 80px; background: #f0efe9 url('./assets/images/icons/password.png') 50% 50% no-repeat; background-size: 30%; }
 	
 	.input-field::placeholder {
 		color: rgba(93, 90, 85, .5);
 	}
 	
-	.label__checkbox {
+	.label { cursor: pointer; }
+	
+	.label__checkbox, .label__radio {
 		position: relative;
-		padding-left: 30px;
+		padding: 20px 0 20px 30px;
 		
-		&::before {
-			content: "\2714";
+		&::before, &::after {
+			content: "";
 			position: absolute;
 			top: 0;
 			bottom: 0;
 			left: 0;
+			margin: auto;
+		}
+		
+		&::before {
 			width: 21px;
 			height: 20px;
 			display: block;
 			background: #fff;
+			border-radius: 3px;
+			transition: background .5s ease;
 		}
 	}
-	.checkbox { display: none; }
-	.checkbox:checked+label::before {
+	
+	.label__checkbox::after { left: 5px; width: 12px; height: 12px; background: url('./assets/images/icons/check.png') 50% 50% no-repeat; background-size: contain; }
+	
+	.label__radio::after { left: 7px; width: 8px; height: 8px; background: #fff; border-radius: 100%; transition: background .5s ease; }
+	
+	.label__radio::before { border-radius: 100%; }
+	.checkbox, .radio { display: none; }
+	.checkbox:checked+label::before, .radio:checked+label::after {
 		background: $green-dark;
 	}
 	
 	.group__radio {display: inline-block;  }
-	.radio-wrap { display: flex; }
+	.radio-wrap { display: flex;
+		width: 170px;
+		justify-content: space-between;
+		padding: 10px;
+	}
+	
+	.label__radio { padding-left: 30px; }
   
   .content__wide {
 	  position: relative;

@@ -41,18 +41,21 @@
 								.login-ttl Авторизируйтесь
 								form(class="form form__login" name="login-form")
 									.form-group
+										i.input-ico.input-ico__login
 										input(type="text", name="login", class="input-field", placeholder="Логин")
+										i.input-ico.input-ico__pass
 										input(type="password", name="password", class="input-field", placeholder="Пароль")
 									.form-group
 										input(type="checkbox", class="checkbox", name="not-bot", id="not-bot")
 										label(class="label label__checkbox", for="not-bot") Я человек
 										span Вы точно не робот?
-										.form-group
-											input(type="radio", class="radio", name="sure", id="sure")
-											label(class="label label__radio", for="sure") Да
-										.form-group
-										input(type="radio", class="radio", name="not-sure", id="notSure")
-										label(class="label label__radio", for="notSure") Не уверен
+										.radio-wrap
+											div(class="form-group group__radio")
+												input(type="radio", class="radio", name="is-humain", value="sure", id="sure", checked)
+												label(class="label label__radio", for="sure") Да
+											div(class="form-group group__radio")
+												input(type="radio", class="radio", name="is-humain", value="not-sure", id="notSure")
+												label(class="label label__radio", for="notSure") Не уверен
 								nav.main-nav
 									ul.nav-wrap
 										li(class="nav-item" @click="toFlip")
@@ -156,6 +159,7 @@
 	
 	.page__main {
 		.main-header { background: rgba(43, 65, 44, .6); }
+		.main-nav { position: absolute; bottom: 0; width: 100%; }
 		.footer__main { position: absolute; bottom: 30px; width: 100%; }
 		.sec__copy { color: rgba(255, 255, 255, 1); background: transparent; }
 	}
@@ -185,9 +189,6 @@
 			&.in-ico { width: 24px; height: 23px; }
 		}
 	}
-	
-	.main-nav { width: 100%; }
-	
 	.nav {
 		&-wrap { display: flex; justify-content: space-around; width: 100%; height: 45px; align-items: center; margin: 0; padding-left: 0;}
 		&-item { height: 100%; flex-grow: 1; background: $green-light; border-right: 2px solid rgba(255, 255, 255, .6); cursor: pointer; transition: background .8s;
@@ -199,10 +200,6 @@
 	}
 	
 	.login {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
 		
 		&-ttl {position: relative; padding: 20px; font-family: $font-sansus; font-size: 35px; text-transform: uppercase;
 			&::after {
@@ -220,12 +217,18 @@
 		}
 		
 	}
-	.form__login { width: 90%; margin: auto; }
+	.form__login { width: 90%; margin: auto; padding-top: 20px; }
 	
 	.form-group {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		
+		.group__radio {display: inline-block;  }
+	}
+	
+	@media screen and (max-width: 600px) {
+		.card-wrap { width: 90%; }
 	}
 
 
