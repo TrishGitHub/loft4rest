@@ -398,8 +398,8 @@
 			&-src {position: absolute; top: 0; left: 0; right: 0; width: 100%; margin: auto; display: block; }
 		}
 		
-		&-ttl { font-size: 28px; font-weight: 500; transition: color .25s; }
-		&-subttl {font-size: 16px; font-weight: normal; transition: color .25s;  }
+		&-ttl {  margin: 5px 0; font-size: 1.75rem; font-weight: 500; transition: color .25s; }
+		&-subttl { margin: 0; font-size: 1rem; font-weight: normal; transition: color .25s;  }
 		&-link { display: block; color: #fff; text-decoration: none;
 			&:hover {
 				.user-ttl, .user-subttl { color: rgba(255, 255, 255, .9); }

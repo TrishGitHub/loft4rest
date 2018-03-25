@@ -4,7 +4,7 @@
 			<!--.preloader-->
 				<!--svg(class="preloader-svg")-->
 					<!--use(xlink:href='#preloader-svg' width="80px" height="96px")-->
-		.main-page
+		.page__main
 			button(class="btn" @click="toFlip") Авторизироваться
 			header(class="main-header")
 				.card-wrap
@@ -59,6 +59,10 @@
 											router-link(to='/', class="nav-link" ) На главную
 										li.nav-item
 											router-link(to='/admin', class="nav-link") Войти
+											
+			footer.footer__main
+				.sec__copy
+					| © Владимир Астахов | Создано с любовью в LoftSchool | 2016
 											
 			svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', style='display: none;')
 				symbol#fb-svg(viewbox='0 0 12 25')
@@ -150,10 +154,14 @@
 		}
 	}
 	
-	.main-page .main-header { background: rgba(43, 65, 44, .6); }
+	.page__main {
+		.main-header { background: rgba(43, 65, 44, .6); }
+		.footer__main { position: absolute; bottom: 30px; width: 100%; }
+		.sec__copy { color: rgba(255, 255, 255, 1); background: transparent; }
+	}
 	
 	.social {
-		&-wrap { display: flex; width: 50%; height: 36px; margin: auto; padding-left: 0; }
+		&-wrap { display: flex; width: 50%; height: 36px; margin: auto; padding: 20px 0 0; }
 		&-item { position: relative; width: calc(100% / 3); height: 100%; padding: 0; color: transparent;
 			&:hover {
 				.social-svg { fill: $green-dark; }
