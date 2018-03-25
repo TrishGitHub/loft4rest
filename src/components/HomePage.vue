@@ -5,7 +5,7 @@
 				<!--svg(class="preloader-svg")-->
 					<!--use(xlink:href='#preloader-svg' width="80px" height="96px")-->
 		.page__main
-			button(class="btn" @click="toFlip") Авторизироваться
+			button(class="btn" @click="toFlip" id="enter-btn") Авторизироваться
 			header(class="main-header")
 				.card-wrap
 					.flip-card(v-bind:class="{ 'is-flipped': isFlipped }")
@@ -108,8 +108,16 @@
         },
 		methods: {
             toFlip(){
+                const enterBtn = document.getElementById('enter-btn');
+                
+                if(this.isFlipped) {
+                    window.location.hash = '';
+                    enterBtn.style.display = 'block';
+				} else {
+                    window.location.hash = 'login';
+                    enterBtn.style.display = 'none';
+				}
                 this.isFlipped = !this.isFlipped;
-               
 			}
 		}
     }
