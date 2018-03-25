@@ -32,6 +32,15 @@
 		font-weight: normal;
 		line-height: 1.42;
 	}
+	
+	/*.preloader-wrap {*/
+		/*display: none;*/
+	/*}*/
+	/**/
+	/*.preloader-wrap[v-cloak] {*/
+		/*position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;*/
+		/*.preloader-svg { display: block; width: 80px; height: 96px; fill: #fff; }*/
+	/*}*/
 
   .preloader-wrap {
 	  &.preloader-show { position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;

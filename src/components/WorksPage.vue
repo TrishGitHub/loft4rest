@@ -181,8 +181,8 @@
         methods: {
             toOpenMenu(){
                 this.menuOpen = !this.menuOpen;
-            }
-        }
+            },
+        },
     }
 </script>
 

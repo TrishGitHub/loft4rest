@@ -1,6 +1,6 @@
 <template lang="pug">
 	.wrapper
-		<!--.preloader-wrap(v-bind:class="{'preloader-show': 'preloder' }")-->
+		<!--div(class="preloader-wrap preloader-show")-->
 			<!--.preloader-->
 				<!--svg(class="preloader-svg")-->
 					<!--use(xlink:href='#preloader-svg' width="80px" height="96px")-->
@@ -93,18 +93,17 @@
         data() {
             return {
                 isFlipped: false,
-				preloader: false,
             }
         },
         mounted: function () {
-            console.log(this.preloader);
-            
             this.$nextTick(function () {
-                setTimeout(function() {
-                    this.preloader = false;
-                    console.log(preloader);
-                    }, 1000);
+                setTimeout(function(){
+
+				}, 1000);
+            
             });
+        },
+        created() {
         },
 		methods: {
             toFlip(){
