@@ -419,6 +419,7 @@
 						.social-svg { fill: $green-dark; }
 					}
 				}
+				&-link { display: flex; align-items: center; }
 				&-list { display: block; height: auto; }
 				&-svg {right: initial; fill: $green-light;
 					&:hover { fill: $green-dark; }
