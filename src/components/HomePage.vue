@@ -1,9 +1,21 @@
 <template lang="pug">
 	.wrapper
-		<!--div(class="preloader-wrap preloader-show")-->
-			<!--.preloader-->
-				<!--svg(class="preloader-svg")-->
-					<!--use(xlink:href='#preloader-svg' width="80px" height="96px")-->
+		div(class="preloader-wrap preloader-show")
+			.preloader
+				span.preloader-counter
+				svg#preloader-svg( width='80px', height='95.113px', viewbox='0 0 80 95.113', enable-background='new 0 0 80 95.113', xml:space='preserve')
+					g.wave-svg
+						path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,38.005c6.663,0,6.663,7.801,13.327,7.801\
+				c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801\
+				c6.67,0,6.67,7.801,13.339,7.801S73.33,38.005,80,38.005')
+					g.wave-svg
+						path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,61.684c6.663,0,6.663,7.801,13.327,7.801\
+				c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801\
+				c6.67,0,6.67,7.801,13.339,7.801S73.33,61.684,80,61.684')
+					g.wave-svg
+						path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,85.362c6.663,0,6.663,7.801,13.327,7.801\
+				c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801\
+				c6.67,0,6.67,7.801,13.339,7.801S73.33,85.362,80,85.362')
 		.page__main
 			button(class="btn" @click="toFlip" id="enter-btn") Авторизироваться
 			header(class="main-header")
@@ -97,10 +109,21 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                setTimeout(function(){
-
-				}, 1000);
-            
+                const preloader = document.querySelector('.preloader-counter'),
+                      wrapper = document.querySelector('.preloader-wrap');
+                
+                let count = 0;
+                function loaderCount() {
+                    if (count > 99) {
+                        clearInterval(intervalID);
+                        setTimeout(function(){
+                            wrapper.classList.remove('preloader-show');
+						},500);
+                    }
+                    preloader.textContent = `${count}%`;
+                    count ++;
+                }
+                let intervalID = setInterval(loaderCount,10);
             });
         },
         created() {
@@ -129,6 +152,18 @@
 	
 	$green-light: #649257;
 	$green-dark: #487f39;
+	
+	.preloader-svg #preloader-svg .wave-svg path {
+		stroke: #fff;
+		stroke-dasharray: 50;
+		stroke-dashoffset: 100;
+		animation: dasher 1s infinite;
+	}
+	
+	@keyframes dasher {
+		100% { stroke-dasharray: 100; }
+	};
+	
 	
 	.card {
 		&-wrap {

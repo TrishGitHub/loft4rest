@@ -32,30 +32,32 @@
 		font-weight: normal;
 		line-height: 1.42;
 	}
-	
-	/*.preloader-wrap {*/
-		/*display: none;*/
-	/*}*/
-	/**/
-	/*.preloader-wrap[v-cloak] {*/
-		/*position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;*/
-		/*.preloader-svg { display: block; width: 80px; height: 96px; fill: #fff; }*/
-	/*}*/
-
   .preloader-wrap {
 	  &.preloader-show { position: fixed; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: url("./assets/images/bg/preloader-bg.jpg"); background-size: cover; z-index: 100;
 		  .preloader-svg { display: block; width: 80px; height: 96px; fill: #fff; }
+		  .preloader { position: relative;
+			  &-counter {
+				  font-size: 1.5rem;
+				  color: #fff;
+				  position: absolute;
+				  left: 0;
+				  right: 0;
+				  margin: auto;
+				  top: -10px;
+			  }
+		  }
+		  #preloader-svg { display: block;
+			  .wave-svg path {
+				  stroke: #fff;
+				  stroke-dasharray: 50;
+				  stroke-dashoffset: 100;
+				  animation: dasher 1s infinite;
+			  }
+		  }
 	  }
   }
-	
-	.preloader-svg { display: none; }
-	
-	#preloader-svg .wave-svg path {
-		stroke: #fff;
-		stroke-dasharray: 50;
-		stroke-dashoffset: 100;
-		animation: dasher 1s infinite;
-	}
+	#preloader-svg { display: none; }
+
 	
 	@keyframes dasher {
 		100% { stroke-dasharray: 100; }
@@ -117,9 +119,9 @@
 			transition: transform .8s .5s ease;
 		}
 		
-		&::before { left: 0; transform: translateX(-101%);}
+		&::before { left: -1px; transform: translateX(-101%);}
 		
-		&:after { right: 0; transform: translateX(101%);}
+		&:after { right: -1px; transform: translateX(101%);}
 		
 		.nav {
 			&-wrap { position: relative; height: auto; display: block; padding-left: 0; padding-top: 10vh; opacity: 0; transition: opacity .5s 0s; z-index: 10;}
