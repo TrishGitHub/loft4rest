@@ -4,7 +4,7 @@
 			ul.nav-wrap
 				li.nav-item
 					router-link(to='/works', class="nav-link") Мои работы
-				li.nav-item
+				li.nav-item.nav-item__disabled
 					router-link(to='/blog', class="nav-link") Блог
 				li.nav-item
 					router-link(to='/about', class="nav-link") Обо мне

@@ -145,6 +145,14 @@
 					&::after { transform: scale(1); }
 				}
 				
+				&__disabled {
+					opacity: .4;
+					cursor: default;
+					pointer-events: none;
+					
+					&::after { display: none; }
+				}
+				
 			}
 			&-link { height: auto; font-family: $font-sansus; text-transform: uppercase; font-size: 3.125rem;}
 		}
@@ -245,7 +253,7 @@
 		}
 		
 		&::before {
-			width: 21px;
+			width: 20px;
 			height: 20px;
 			display: block;
 			background: #fff;
@@ -256,7 +264,7 @@
 	
 	.label__checkbox::after { left: 5px; width: 12px; height: 12px; background: url('./assets/images/icons/check.png') 50% 50% no-repeat; background-size: contain; }
 	
-	.label__radio::after { left: 7px; width: 8px; height: 8px; background: #fff; border-radius: 100%; transition: background .5s ease; }
+	.label__radio::after { left: 6px; width: 8px; height: 8px; background: #fff; border-radius: 100%; transition: background .5s ease; }
 	
 	.label__radio::before { border-radius: 100%; }
 	.checkbox, .radio { display: none; }

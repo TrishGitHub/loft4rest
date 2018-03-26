@@ -6,7 +6,7 @@
 					router-link(to='/works', class="nav-link") Мои работы
 				li.nav-item
 					router-link(to='/blog', class="nav-link") Блог
-				li.nav-item
+				li.nav-item.nav-item__disabled
 					router-link(to='/about', class="nav-link") Обо мне
 				li.nav-item
 					router-link(to='/', class="nav-link") Авторизация

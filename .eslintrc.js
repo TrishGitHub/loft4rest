@@ -26,6 +26,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     // don't require .vue extension when importing
+	  "indent": [2, "tab"],
+	  "no-tabs": 0,
     'import/extensions': ['error', 'always', {
       js: 'never',
       vue: 'never'

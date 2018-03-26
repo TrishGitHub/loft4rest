@@ -153,18 +153,6 @@
 	$green-light: #649257;
 	$green-dark: #487f39;
 	
-	.preloader-svg #preloader-svg .wave-svg path {
-		stroke: #fff;
-		stroke-dasharray: 50;
-		stroke-dashoffset: 100;
-		animation: dasher 1s infinite;
-	}
-	
-	@keyframes dasher {
-		100% { stroke-dasharray: 100; }
-	};
-	
-	
 	.card {
 		&-wrap {
 			position: absolute;

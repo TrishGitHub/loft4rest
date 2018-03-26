@@ -2,7 +2,7 @@
 	.wrapper.page__inner.page__works(v-bind:class="{ 'burger-open': menuOpen }")
 		nav.nav__burger
 			ul.nav-wrap
-				li.nav-item
+				li.nav-item.nav-item__disabled
 					router-link(to='/works', class="nav-link") Мои работы
 				li.nav-item
 					router-link(to='/blog', class="nav-link") Блог
