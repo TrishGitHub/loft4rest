@@ -1,12 +1,13 @@
 <template lang="pug">
 	.carousel
-		.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]" v-bind:style="style"  v-on:click="centerSelf") {{i+1}}
+		.carousel-item(v-for="i in array" v-bind:style="style"  v-on:click="centerSelf") {{i+1}}
 </template>
 
 <script>
     export default {
         name: 'CarouselItem',
         data: () => ({
+			array: [0,1,2,3,4,5,6,7,8,9],
             zIndex: 0,
             xtrans: 0,
             ytrans: 0,
@@ -31,7 +32,6 @@
         },
         methods: {
             centerSelf() {
-                alert("here");
                 this.$parent.arrange(this.$parent.$children.indexOf(this));
 			},
         }
