@@ -52,27 +52,8 @@
 				section.sec__works
 					.works-item
 						.carousel
-							.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]"  v-on:click="centerSelf") {{i+1}}
-						<!--#carousel(class="carousel-wrap")-->
-							<!--a(href='#')-->
-								<!--img#item-1(src='../assets/images/content/works/1.jpg', class="carousel-img", style='display: inline; left: 193px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')-->
-							<!--a(href='#')-->
-								<!--img#item-2(src='../assets/images/content/works/2.jpg', class="carousel-img carousel-center" style='display: inline; left: 320px; top: 60px; visibility: visible; position: absolute; z-index: 5; opacity: 1; width: 320px; height: 360px;')-->
-							<!--a(href='#')-->
-								<!--img#item-3(src='../assets/images/content/works/3.jpg', class="carousel-img" style='display: inline; left: 543px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')-->
-							<!--a(href='#')-->
-								<!--img#item-4(src='../assets/images/content/works/4.jpg', class="carousel-img" style='display: inline; left: 681.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')-->
-							<!--a(href='#')-->
-								<!--img#item-5(src='../assets/images/content/works/5.jpg', class="carousel-img" style='display: inline; left: 768.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')-->
-							<!--a(href='#')-->
-								<!--img#item-6(src='../assets/images/content/works/6.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')-->
-							<!--a(href='#')-->
-								<!--img#item-7(src='../assets/images/content/works/7.jpg', class="carousel-img" style='display: inline; left: 441.584px; top: 128.391px; visibility: visible; position: absolute; z-index: 1; opacity: 0; width: 76.832px; height: 88px;')-->
-							<!--a(href='#')-->
-								<!--img#item-8(src='../assets/images/content/works/8.jpg', class="carousel-img" style='display: inline; left: 82.12px; top: 119.13px; visibility: visible; position: absolute; z-index: 2; opacity: 0.512; width: 109.76px; height: 124px;')-->
-							<!--a(href='#')-->
-								<!--img#item-9(src='../assets/images/content/works/9.jpg', class="carousel-img" style='display: inline; left: 121.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')-->
-			
+							<!--.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]"  v-on:click="centerSelf") {{i+1}}-->
+							.carousel-item(v-for="slide in slides" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }") {{slide.id}}
 				.control-wrap
 							.control-item.control-item__left(@click="prevSlider")
 								svg(class="arrow-down-svg")
@@ -186,6 +167,51 @@
 	            ytrans: 0,
 	            scale: 1,
 	            opacity: 1,
+				slides: [
+					{
+						id: 1,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/1.jpg',
+					},
+					{
+						id: 2,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/2.jpg',
+					},
+					{
+						id: 3,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/3.jpg',
+					},
+					{
+						id: 4,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/4.jpg',
+					},
+					{
+						id: 5,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/5.jpg',
+					},
+					{
+						id: 6,
+						title: 'Сайт школы онлайн образования',
+						tags: ['HTML', 'CSS', 'Javascript'],
+						link: '#',
+						image: '/static/img/works/6.jpg',
+					},
+					
+				],
             }
         },
 	    computed: {
@@ -310,14 +336,15 @@
 			background-color: #fff;
 			color: deeppink;
 			width: 40%;
-			height: auto;
+			height: 70%;
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			text-align: center;
 			line-height: 20vw;
-			font-size: 10vw;
+			font-size: 14vw;
+			font-family: $font-sansus;
 			box-shadow: 0 15px 10px -15px #969393;
 			
 			opacity: 0;
