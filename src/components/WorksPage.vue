@@ -52,7 +52,7 @@
 				section.sec__works
 					.works-item
 						.carousel
-							.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]" v-bind:style="style"  v-on:click="centerSelf") {{i+1}}
+							.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]"  v-on:click="centerSelf") {{i+1}}
 						<!--#carousel(class="carousel-wrap")-->
 							<!--a(href='#')-->
 								<!--img#item-1(src='../assets/images/content/works/1.jpg', class="carousel-img", style='display: inline; left: 193px; top: 87px; visibility: visible; position: absolute; z-index: 4; opacity: 0.8; width: 224px; height: 252px;')-->
@@ -74,13 +74,12 @@
 								<!--img#item-9(src='../assets/images/content/works/9.jpg', class="carousel-img" style='display: inline; left: 121.6px; top: 105.9px; visibility: visible; position: absolute; z-index: 3; opacity: 0.64; width: 156.8px; height: 176px;')-->
 			
 				.control-wrap
-							.control-item.control-item__left
+							.control-item.control-item__left(@click="prevSlider")
 								svg(class="arrow-down-svg")
 									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
-							.control-item.control-item__right
+							.control-item.control-item__right(@click="nextSlider")
 								svg(class="arrow-down-svg")
 									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
-						
 			
 			section.sec__review
 				.sec-ttl Что обо мне говорят
@@ -190,20 +189,20 @@
             }
         },
 	    computed: {
-		    style() {
-			    return {
-				    transition: 'transform 0.5s, opacity 0.5s',
-				    transform: this.transform,
-				    'z-index': this.zIndex,
-				    opacity: this.opacity,
-			    }
-		    },
-		    transform() {
-			    return [
-				    `translate(${this.xtrans - 50}%, ${this.ytrans - 50}%)`,
-				    `scale(${this.scale})`,
-			    ].join(' ');
-		    }
+//		    style() {
+//			    return {
+//				    transition: 'transform 0.5s, opacity 0.5s',
+//				    transform: this.transform,
+//				    'z-index': this.zIndex,
+//				    opacity: this.opacity,
+//			    }
+//		    },
+//		    transform() {
+//			    return [
+//				    `translate(${this.xtrans - 50}%, ${this.ytrans - 50}%)`,
+//				    `scale(${this.scale})`,
+//			    ].join(' ');
+//		    }
 	    },
 	    mounted: function () {
 		    this.$nextTick(function () {
@@ -212,8 +211,11 @@
 					  cln = carousel.cloneNode(true),
 				      cln2 = carousel2.cloneNode(true);
 			    
+
 			    document.getElementsByClassName('control-item')[0].appendChild(cln);
 			    document.getElementsByClassName('control-item')[1].appendChild(cln2);
+
+			    this.centerSelf();
 		    });
 	    },
         methods: {
@@ -221,8 +223,35 @@
                 this.menuOpen = !this.menuOpen;
             },
 	        centerSelf() {
-		        this.$parent.arrange(this.$parent.$children.indexOf(this));
+            	const slides = document.getElementsByClassName('carousel-item'),
+		            currentSlide = document.getElementsByClassName('carousel-item')[0],
+		            prevSlide = document.getElementsByClassName('carousel-item')[9],
+		            nextSlide = document.getElementsByClassName('carousel-item')[1];
+		            
+		        currentSlide.classList.add('slide__current');
+		        prevSlide.classList.add('slide__prev');
+		        nextSlide.classList.add('slide__next');
 	        },
+			nextSlider() {
+				const slides = document.getElementsByClassName('carousel-item'),
+					currentSlide = document.getElementsByClassName('carousel-item')[0],
+					prevSlide = document.getElementsByClassName('carousel-item')[9],
+					nextSlide = document.getElementsByClassName('carousel-item')[1],
+					anotherSlide = document.getElementsByClassName('carousel-item')[2];
+
+				currentSlide.classList.remove('slide__current');
+				prevSlide.classList.remove('slide__prev');
+				nextSlide.classList.remove('slide__next');
+
+				currentSlide.classList.add('slide__prev');
+				nextSlide.classList.add('slide__current');
+				anotherSlide.classList.add('slide__next');
+				
+				
+			},
+			prevSlider() {
+					
+			}
         },
     }
 </script>
@@ -290,6 +319,8 @@
 			line-height: 20vw;
 			font-size: 10vw;
 			box-shadow: 0 15px 10px -15px #969393;
+			
+			opacity: 0;
 		}
 	}
 	.carousel .dots {
@@ -301,6 +332,13 @@
 	.carousel .dots .dot {
 		background-color: #000;
 	}
+	
+	.slide {
+		&__current { opacity: 1; transition: .8s; z-index: 2;  }
+		&__prev { transform: translateX(-110%) translateY(-55%) scale(.8); opacity: .9; transition: .8s; z-index: 1;  }
+		&__next { transform: translateX(10%) translateY(-55%) scale(.8) ; transition: .8s; opacity: .9; z-index: 1;  }
+	}
+	
 	
 	.control {
 		&-wrap { display: flex; height: 30%;  }
