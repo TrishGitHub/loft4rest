@@ -53,12 +53,12 @@
 					.works-item
 						.carousel
 							<!--.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]"  v-on:click="centerSelf") {{i+1}}-->
-							.carousel-item(v-for="slide in slides" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }") {{slide.id}}
+							.carousel-item(v-for="slide in slidesArray" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }") {{slide.id + 1}}
 				.control-wrap
-							.control-item.control-item__left(@click="prevSlider")
+							.control-item.control-item__left(@click="prevSlider(currentSlide[0])")
 								svg(class="arrow-down-svg")
 									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
-							.control-item.control-item__right(@click="nextSlider")
+							.control-item.control-item__right(@click="nextSlider(currentSlide[0])")
 								svg(class="arrow-down-svg")
 									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
 			
@@ -167,44 +167,46 @@
 	            ytrans: 0,
 	            scale: 1,
 	            opacity: 1,
-				slides: [
+				slides: document.getElementsByClassName('carousel-item'),
+				currentSlide: document.getElementsByClassName('slide__current'),
+				slidesArray: [
 					{
-						id: 1,
+						id: 0,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/1.jpg',
 					},
 					{
-						id: 2,
+						id: 1,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/2.jpg',
 					},
 					{
-						id: 3,
+						id: 2,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/3.jpg',
 					},
 					{
-						id: 4,
+						id: 3,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/4.jpg',
 					},
 					{
-						id: 5,
+						id: 4,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/5.jpg',
 					},
 					{
-						id: 6,
+						id: 5,
 						title: 'Сайт школы онлайн образования',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
@@ -232,14 +234,14 @@
 	    },
 	    mounted: function () {
 		    this.$nextTick(function () {
-		    	const carousel = document.querySelector('.carousel'),
-					  carousel2 = document.querySelector('.carousel'),
-					  cln = carousel.cloneNode(true),
-				      cln2 = carousel2.cloneNode(true);
-			    
-
-			    document.getElementsByClassName('control-item')[0].appendChild(cln);
-			    document.getElementsByClassName('control-item')[1].appendChild(cln2);
+//		    	const carousel = document.querySelector('.carousel'),
+//					  carousel2 = document.querySelector('.carousel'),
+//					  cln = carousel.cloneNode(true),
+//				      cln2 = carousel2.cloneNode(true);
+//
+//
+//			    document.getElementsByClassName('control-item')[0].appendChild(cln);
+//			    document.getElementsByClassName('control-item')[1].appendChild(cln2);
 
 			    this.centerSelf();
 		    });
@@ -251,32 +253,48 @@
 	        centerSelf() {
             	const slides = document.getElementsByClassName('carousel-item'),
 		            currentSlide = document.getElementsByClassName('carousel-item')[0],
-		            prevSlide = document.getElementsByClassName('carousel-item')[9],
+		            prevSlide = document.getElementsByClassName('carousel-item')[5],
 		            nextSlide = document.getElementsByClassName('carousel-item')[1];
 		            
 		        currentSlide.classList.add('slide__current');
 		        prevSlide.classList.add('slide__prev');
 		        nextSlide.classList.add('slide__next');
 	        },
-			nextSlider() {
-				const slides = document.getElementsByClassName('carousel-item'),
-					currentSlide = document.getElementsByClassName('carousel-item')[0],
-					prevSlide = document.getElementsByClassName('carousel-item')[9],
-					nextSlide = document.getElementsByClassName('carousel-item')[1],
-					anotherSlide = document.getElementsByClassName('carousel-item')[2];
+			
+			nextSlider(el) {
+				for (let slide of this.slides) {
+					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
+				};
 
-				currentSlide.classList.remove('slide__current');
-				prevSlide.classList.remove('slide__prev');
-				nextSlide.classList.remove('slide__next');
+				el.classList.add('slide__prev');
+				
+				if(el.nextSibling == null ) {
+					this.slides[this.slides.length - 1].classList.add('slide__current');
+					this.slides[this.slides.length - 2].classList.add('slide__next');
 
-				currentSlide.classList.add('slide__prev');
-				nextSlide.classList.add('slide__current');
-				anotherSlide.classList.add('slide__next');
-				
-				
+				} else {
+					el.nextSibling.classList.add('slide__current');
+					el.nextSibling.nextSibling.classList.add('slide__next');
+				};
 			},
-			prevSlider() {
-					
+			
+			
+			prevSlider(el) {
+				
+            	for (let slide of this.slides) {
+					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
+            	};
+				
+				el.classList.add('slide__next');
+
+				if(el.previousSibling == null ) {
+					this.slides[this.slides.length - 1].classList.add('slide__current');
+					this.slides[this.slides.length - 2].classList.add('slide__prev');
+
+				} else {
+					el.previousSibling.classList.add('slide__current');
+					el.previousSibling.previousSibling.classList.add('slide__prev');
+				};
 			}
         },
     }
@@ -345,6 +363,7 @@
 			line-height: 20vw;
 			font-size: 14vw;
 			font-family: $font-sansus;
+			background-size: cover;
 			box-shadow: 0 15px 10px -15px #969393;
 			
 			opacity: 0;

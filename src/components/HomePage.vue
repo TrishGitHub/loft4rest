@@ -19,7 +19,7 @@
 		.page__main
 			button(class="btn" @click="toFlip" id="enter-btn") Авторизироваться
 			header(class="main-header")
-				.card-wrap
+				.card-wrap(v-cloak)
 					.flip-card(v-bind:class="{ 'is-flipped': isFlipped }")
 						.card-front
 							section.sec__user
