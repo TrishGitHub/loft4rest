@@ -57,10 +57,10 @@
 				.control-wrap
 							.control-item.control-item__left(@click="prevSlider(currentSlide[0])")
 								svg(class="arrow-down-svg")
-									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
+									use(xlink:href='#arrow-down-svg' width="100%" height="100%")
 							.control-item.control-item__right(@click="nextSlider(currentSlide[0])")
 								svg(class="arrow-down-svg")
-									use(xlink:href='#arrow-down-svg' width="26px" height="26px")
+									use(xlink:href='#arrow-down-svg' width="100%" height="100%")
 			
 			section.sec__review
 				.sec-ttl Что обо мне говорят
@@ -388,21 +388,20 @@
 	
 	.control {
 		&-wrap { display: flex; height: 30%;  }
-		&-item { position: relative; width: 50%; background: rgba(164, 168, 160, .6); cursor: pointer;
+		&-item { position: relative; display: flex; width: 50%; background: rgba(164, 168, 160, .6); cursor: pointer;
 			&:hover {
 				.carousel-item { box-shadow: none; }
-				.arrow-down-svg { transform: scale(2) translateY(10px); opacity: .6; }
 			}
 			.carousel { width: 10vw; opacity: .4;
 				&-item { width: 50%; height: 80%; font-size: 5rem; line-height: 240%; color: transparent; }
 			}
-			.arrow-down-svg {position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: block; margin: auto; transform: scale(2); opacity: .8; z-index: 10; transition: .5s;
+			.arrow-down-svg { position: relative; display: inline-block; margin: auto; width: 50px; height: 50px; opacity: .8; z-index: 10; transition: .5s;
+				&:hover { transform: translateY(10px); opacity: .6; }
 			}
 			&__right {
-				&:hover {
-					.arrow-down-svg { transform: scale(2) rotate(180deg) translateY(10px); opacity: .6; }
+				.arrow-down-svg { transform: rotate(180deg); transition: .5s;
+					&:hover { transform: rotate(180deg) translateY(10px); opacity: .6; }
 				}
-				.arrow-down-svg { transform: scale(2) rotate(180deg); transition: .5s; }
 			}
 		}
 	}
