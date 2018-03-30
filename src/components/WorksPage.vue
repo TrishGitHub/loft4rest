@@ -266,34 +266,43 @@
 					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
 				};
 
-				el.classList.add('slide__prev');
-				
-				if(el.nextSibling == null ) {
-					this.slides[this.slides.length - 1].classList.add('slide__current');
-					this.slides[this.slides.length - 2].classList.add('slide__next');
-
+				if(el.innerText == '5') {
+					this.centerSelf();
 				} else {
-					el.nextSibling.classList.add('slide__current');
-					el.nextSibling.nextSibling.classList.add('slide__next');
+					el.classList.add('slide__prev');
+
+					if(el.nextSibling == null ) {
+						this.slides[this.slides.length - 1].classList.add('slide__current');
+						this.slides[this.slides.length - 2].classList.add('slide__next');
+
+					} else {
+						el.nextSibling.classList.add('slide__current');
+						el.nextSibling.nextSibling.classList.add('slide__next');
+					};
 				};
+
+
 			},
 			
 			
 			prevSlider(el) {
-				
             	for (let slide of this.slides) {
 					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
             	};
-				
-				el.classList.add('slide__next');
 
-				if(el.previousSibling == null ) {
-					this.slides[this.slides.length - 1].classList.add('slide__current');
-					this.slides[this.slides.length - 2].classList.add('slide__prev');
-
+				if(el.innerText == '2') {
+					this.centerSelf();
 				} else {
-					el.previousSibling.classList.add('slide__current');
-					el.previousSibling.previousSibling.classList.add('slide__prev');
+					el.classList.add('slide__next');
+
+					if(el.previousSibling == null ) {
+						this.slides[this.slides.length - 1].classList.add('slide__current');
+						this.slides[this.slides.length - 2].classList.add('slide__prev');
+
+					} else {
+						el.previousSibling.classList.add('slide__current');
+						el.previousSibling.previousSibling.classList.add('slide__prev');
+					};
 				};
 			}
         },
