@@ -626,6 +626,7 @@
 		z-index: 2;
 		transform: scale(0);
 		opacity: 0;
+		transition: .5s cubic-bezier(0, 0, 0.33, 1.66);
 
 		&-show {
 			transform: scale(1);

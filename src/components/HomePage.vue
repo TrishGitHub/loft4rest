@@ -77,7 +77,7 @@
 										li(class="nav-item" @click="toFlip")
 											router-link(to='/', class="nav-link" ) На главную
 										li.nav-item
-											a(href="", class="nav-link" @click="checkForm") Войти
+											a(href='#', class="nav-link" @click="checkForm") Войти
 											
 			footer.footer__main
 				.sec__copy
@@ -114,6 +114,8 @@
 					password: null,
 					notBot: null,
 					sure: null,
+					loginField: document.getElementById('login'),
+					passField: document.getElementById('password'),
             }
         },
         mounted: function () {
@@ -151,19 +153,23 @@
                 this.isFlipped = !this.isFlipped;
 			},
 			checkForm:function(e) {
-				if(this.login && this.password && this.notBot && this.sure) {					
+				if(this.login && this.login == "admin" && this.password && this.password == "123" && this.notBot && this.sure) {
+					this.loginField.value='';
+					this.passField.value='';
+					this.$router.push('admin') 			
 					return true;					
 				}
 
 				this.errors = [];			
 
-				if(!this.login && this.login != "admin") this.errors.push("Проверьте ведённый логин.");
-				if(this.login != "admin") this.errors.push("Доступ разрешён только администраторам сайта");
-				if(!this.password && this.password != "123") this.errors.push("Проверьте ведённый пароль");
+				if(!this.login) this.errors.push("Проверьте ведённый логин");
+				if(!this.password) this.errors.push("Проверьте ведённый пароль");
+				if(this.login != "admin" && this.password != "123") this.errors.push("Доступ разрешён только администраторам сайта");
+				if(this.login == "admin" && this.password != "123") this.errors.push("Если Вы администратор сайта, проверьте введённый пароль");
 				if(!this.notBot) this.errors.push("Подтвердите, что вы не робот");
 				if(!this.sure) this.errors.push("Если Вы точно уверены, что не робот, найдите способ это доказать");
 
-				const modal = document.querySelector('.modal').classList.add('modal-show');
+				document.querySelector('.modal').classList.add('modal-show');
 
 				e.preventDefault();
 			},
