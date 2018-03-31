@@ -52,7 +52,6 @@
 				section.sec__works
 					.works-item
 						.carousel
-							<!--.carousel-item(v-for="i in [0,1,2,3,4,5,6,7,8,9]"  v-on:click="centerSelf") {{i+1}}-->
 							.carousel-item(v-for="slide in slidesArray" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }") {{slide.id + 1}}
 				.control-wrap
 							.control-item.control-item__left(@click="prevSlider(currentSlide[0])")
@@ -217,32 +216,9 @@
             }
         },
 	    computed: {
-//		    style() {
-//			    return {
-//				    transition: 'transform 0.5s, opacity 0.5s',
-//				    transform: this.transform,
-//				    'z-index': this.zIndex,
-//				    opacity: this.opacity,
-//			    }
-//		    },
-//		    transform() {
-//			    return [
-//				    `translate(${this.xtrans - 50}%, ${this.ytrans - 50}%)`,
-//				    `scale(${this.scale})`,
-//			    ].join(' ');
-//		    }
 	    },
 	    mounted: function () {
 		    this.$nextTick(function () {
-//		    	const carousel = document.querySelector('.carousel'),
-//					  carousel2 = document.querySelector('.carousel'),
-//					  cln = carousel.cloneNode(true),
-//				      cln2 = carousel2.cloneNode(true);
-//
-//
-//			    document.getElementsByClassName('control-item')[0].appendChild(cln);
-//			    document.getElementsByClassName('control-item')[1].appendChild(cln2);
-
 			    this.centerSelf();
 		    });
 	    },

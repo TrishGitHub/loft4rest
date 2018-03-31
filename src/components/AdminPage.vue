@@ -6,16 +6,19 @@
         .content
             tabs
             .content-inner
+                tab-about
 
 </template>
 
 <script>
 
     import tabs from './includes/tabs'
+    import tabAbout from './includes/tab-about'
 
     export default {
         components: {
-            tabs: tabs
+            tabs: tabs,
+            tabAbout: tabAbout,
         }
     }
     
@@ -40,6 +43,7 @@
     }
 
     header { position: relative; padding: 30px; background: $green-light; z-index: 1;}
+    
     .sec-ttl { font-size: 1.75rem; font-familty: $font-roboto; font-weigth: 500; color: #fff; text-align: left; text-transform: none; 
          &::after { display: none; }
     }
