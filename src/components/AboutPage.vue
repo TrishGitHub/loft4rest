@@ -244,6 +244,10 @@
                 zoom: 14,
                 zoomControl: false,
                 streetViewControl: false,
+	            panControl: false,
+	            mapTypeControl: false,
+	            overviewMapControl: false,
+	            scrollwheel: false,
                 styles: [
                     {
                         "elementType": "geometry",

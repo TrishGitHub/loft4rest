@@ -123,7 +123,7 @@
 		
 		&::before { left: -1px; transform: translateX(-101%);}
 		
-		&:after { right: -1px; transform: translateX(101%);}
+		&:after { right: 0; transform: translateX(101%);}
 		
 		.nav {
 			&-wrap { position: relative; height: auto; display: block; padding-left: 0; padding-top: 10vh; opacity: 0; transition: opacity .5s 0s; z-index: 10;}
