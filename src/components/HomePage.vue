@@ -51,19 +51,23 @@
 						.card-back
 							section.login
 								.login-ttl Авторизируйтесь
+								.modal.modal__error(v-bind:class="{'modal-show': errors.length }" )
+									i.close-modal(@click="closeModal")
+									ul.error-list
+										li.error-item(v-for="error in errors") {{error}}
 								form(class="form form__login" name="login-form")
 									.form-group
+										input(type="text", name="login", id="login", class="input-field", placeholder="Логин" v-model="login")
 										i.input-ico.input-ico__login
-										input(type="text", name="login", class="input-field", placeholder="Логин")
+										input(type="password", name="password", id="password", class="input-field", placeholder="Пароль", v-model="password")
 										i.input-ico.input-ico__pass
-										input(type="password", name="password", class="input-field", placeholder="Пароль")
 									.form-group
-										input(type="checkbox", class="checkbox", name="not-bot", id="not-bot")
-										label(class="label label__checkbox", for="not-bot") Я человек
+										input(type="checkbox", class="checkbox", name="not-bot", id="notBot", v-model="notBot")
+										label(class="label label__checkbox", for="notBot") Я человек
 										span Вы точно не робот?
 										.radio-wrap
 											div(class="form-group group__radio")
-												input(type="radio", class="radio", name="is-humain", value="sure", id="sure", checked)
+												input(type="radio", class="radio", name="is-humain", value="sure", id="sure", checked, v-model="sure")
 												label(class="label label__radio", for="sure") Да
 											div(class="form-group group__radio")
 												input(type="radio", class="radio", name="is-humain", value="not-sure", id="notSure")
@@ -73,7 +77,7 @@
 										li(class="nav-item" @click="toFlip")
 											router-link(to='/', class="nav-link" ) На главную
 										li.nav-item
-											router-link(to='/admin', class="nav-link") Войти
+											a(href="", class="nav-link" @click="checkForm") Войти
 											
 			footer.footer__main
 				.sec__copy
@@ -105,6 +109,11 @@
         data() {
             return {
                 isFlipped: false,
+				    errors:[],
+					login: null,
+					password: null,
+					notBot: null,
+					sure: null,
             }
         },
         mounted: function () {
@@ -140,6 +149,26 @@
                     enterBtn.style.display = 'none';
 				}
                 this.isFlipped = !this.isFlipped;
+			},
+			checkForm:function(e) {
+				if(this.login && this.password && this.notBot && this.sure) {					
+					return true;					
+				}
+
+				this.errors = [];			
+
+				if(!this.login && this.login != "admin") this.errors.push("Проверьте ведённый логин.");
+				if(this.login != "admin") this.errors.push("Доступ разрешён только администраторам сайта");
+				if(!this.password && this.password != "123") this.errors.push("Проверьте ведённый пароль");
+				if(!this.notBot) this.errors.push("Подтвердите, что вы не робот");
+				if(!this.sure) this.errors.push("Если Вы точно уверены, что не робот, найдите способ это доказать");
+
+				const modal = document.querySelector('.modal').classList.add('modal-show');
+
+				e.preventDefault();
+			},
+			closeModal(e) {
+				e.target.parentNode.classList.remove('modal-show');
 			}
 		}
     }
@@ -252,10 +281,10 @@
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		
+		align-items: center;		
 		.group__radio {display: inline-block;  }
 	}
+	.input-field:focus+.input-ico { }
 	
 	@media screen and (max-width: 600px) {
 		.card-wrap { width: 90%; }

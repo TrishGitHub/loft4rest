@@ -340,6 +340,10 @@
 		
 		&:hover { background: $green-dark; border-color: $green-dark; }
 	}
+
+	#enter-btn { transition: .5s ease-in;
+		&:hover { background-color: $green-dark; border-color: $green-dark; }	
+	}
 	
 	.btn_group {
 		display: flex;
@@ -606,6 +610,80 @@
 			-webkit-transform: translateY(-15px);
 			transform: translateY(-15px); }
 	}
+
+	.modal {
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: 90%;
+		min-height: 175px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+		padding: 20px;
+    	box-sizing: border-box;
+		z-index: 2;
+		transform: scale(0);
+		opacity: 0;
+
+		&-show {
+			transform: scale(1);
+			opacity: 1; 
+		}
+
+		&:after {	
+			content: "";		
+			position: absolute;
+			bottom: -30px;
+			left: 50%;
+			width: 0;
+			height: 0;
+			display: block;
+			margin-left: -20px;
+			border: solid transparent 20px;
+			border-top: solid #A6636B 10px;			
+  		}
+
+		&.modal__error {
+			background: #A6636B;
+			border: 1px solid #A6636B;
+		}
+	}
+
+	.close-modal {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		display: block;
+		opacity: .6;
+		cursor: pointer;
+		transition: .6s;
+
+		&:hover {
+			transform: rotate(90deg);
+			transform-origin: center;
+			opacity: 1;
+		}
+
+		&::before, &::after {
+			content: "";
+			position: absolute;
+			top: 10px;
+			right: 0;
+			width: 20px;
+			height: 2px;
+			display: block;
+			background: #fff;
+			transform: rotate(-45deg);
+		}
+
+		&::after { transform: rotate(45deg); }
+	}
+
+	.error-list { margin: 0; padding: 0; }
 	
 @media screen and (max-width: 1366px) {
 	.content__wide, .sec__about, .sec__skills {
