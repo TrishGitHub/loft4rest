@@ -265,7 +265,13 @@
 			
 			prevSlider(el) {
 				const siteItem = document.querySelector('.site-item');
-				// siteItem.children[0].innerText = this.slidesArray[el.innerText].title;
+
+				if(el.innerText  == 1) {
+					siteItem.children[0].innerText = this.slidesArray[this.slides.length - el.innerText].title;	
+				} else {
+					siteItem.children[0].innerText = this.slidesArray[el.innerText - 2].title;
+				}
+				
 
             	for (let slide of this.slides) {
 					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
