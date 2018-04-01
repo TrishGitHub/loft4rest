@@ -22,13 +22,13 @@
             };
         },
         mounted() {
-            fetch("/src/data.json")
+            fetch('/src/data.json')
                 .then(data => {
                     return data.json();
                 })
                 .then(response => {
-                    console.log(response);                
-                });
+                    console.log(response);            
+                })
         }
     }
 </script>

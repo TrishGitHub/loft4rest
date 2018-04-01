@@ -6,6 +6,8 @@ import BlogPage from '@/components/BlogPage'
 import WorksPage from '@/components/WorksPage'
 import AdminPage from '@/components/AdminPage'
 
+import WaterPage from '@/components/WaterPage'
+
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +35,11 @@ export default new Router({
             path: '/admin',
             name: 'AdminPage',
             component: AdminPage
+        },
+        {
+            path: '/water',
+            name: 'WaterPage',
+            component: WaterPage
         },
     ],
 });

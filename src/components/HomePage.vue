@@ -290,7 +290,8 @@
 		align-items: center;		
 		.group__radio {display: inline-block;  }
 	}
-	.input-field:focus+.input-ico { }
+	.input-field:focus+.input-ico__login { background: #f0efe9 url('../assets/images/icons/login-green.png') 50% 50% no-repeat; background-size: 30%; }
+	.input-field:focus+.input-ico__pass { background: #f0efe9 url('../assets/images/icons/password-green.png') 50% 50% no-repeat; background-size: 30%; }
 	
 	@media screen and (max-width: 600px) {
 		.card-wrap { width: 90%; }
