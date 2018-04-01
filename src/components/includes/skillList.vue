@@ -2,13 +2,30 @@
     .skill-list
         .skill-title {{skillType}}
         table
+            // skill-list-item(
+            //     v-for="skill in skills"
+            //     :key="skill.id"
+            //     :skill="skill"
+            // )
+
 
 </template>
 
 <script>
+    import skillListItem from './skillListItem'
+
     export default {
+        components: {
+            skillListItem,
+        },
+
         props: {
-            skillType: String
+            skillType: String,
+            skills: Object,
+        },
+
+        mounted(){
+      
         }
         
     }

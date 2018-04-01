@@ -171,48 +171,49 @@
 				slidesArray: [
 					{
 						id: 0,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 1',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/1.jpg',
 					},
 					{
 						id: 1,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 2',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/2.jpg',
 					},
 					{
 						id: 2,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 3',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/3.jpg',
 					},
 					{
 						id: 3,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 4',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/4.jpg',
 					},
 					{
 						id: 4,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 5',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/5.jpg',
 					},
 					{
 						id: 5,
-						title: 'Сайт школы онлайн образования',
+						title: 'Сайт школы онлайн образования 6',
 						tags: ['HTML', 'CSS', 'Javascript'],
 						link: '#',
 						image: '/static/img/works/6.jpg',
 					},
 					
 				],
+				siteItem: document.querySelector('.site-item'),
             }
         },
 	    computed: {
@@ -238,10 +239,14 @@
 	        },
 			
 			nextSlider(el) {
+
+				const siteItem = document.querySelector('.site-item');
+				siteItem.children[0].innerText = this.slidesArray[el.innerText].title;
+
 				for (let slide of this.slides) {
 					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
-				};
-
+				};				
+								
 				if(el.innerText == '5') {
 					this.centerSelf();
 				} else {
@@ -255,13 +260,13 @@
 						el.nextSibling.classList.add('slide__current');
 						el.nextSibling.nextSibling.classList.add('slide__next');
 					};
-				};
-
-
-			},
-			
+				}
+			},			
 			
 			prevSlider(el) {
+				const siteItem = document.querySelector('.site-item');
+				// siteItem.children[0].innerText = this.slidesArray[el.innerText].title;
+
             	for (let slide of this.slides) {
 					slide.classList.remove('slide__prev', 'slide__current', 'slide__next');
             	};

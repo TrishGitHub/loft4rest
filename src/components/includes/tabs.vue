@@ -13,7 +13,7 @@
     export default {
         data() {
             return {
-                tabs: ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4' ]
+                tabs: ['Обо мне', 'Блог', 'Работы']
             }
         }
     }
