@@ -1,12 +1,12 @@
 <template lang="pug">
     .section__about
-        h1 Страница "Обо мне"
-        // skill-list(
-        //     v-for="skillType in skillTypes"
-        //     :key="skillType"
-        //     :skillType="skillType"
-        //     :skills="skills"
-        // )
+        h1.section-ttl Страница «Обо мне»
+        skill-list(
+            v-for="skillType in skillTypes"
+            :key="skillType"
+            :skillType="skillType"
+            :skills="skills"
+        )
 </template>
 
 <script>
@@ -90,6 +90,16 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import '../../assets/scss/variables';
+
+    .section {
+        &-ttl {
+            font-size: 1.3125rem; 
+            text-align: left;
+            color: rgba(86, 99, 88, 255);
+        }
+
+    }
+
 </style>
