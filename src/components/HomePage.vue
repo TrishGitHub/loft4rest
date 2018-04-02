@@ -154,8 +154,8 @@
 			},
 			checkForm:function(e) {
 				if(this.login && this.login == "admin" && this.password && this.password == "123" && this.notBot && this.sure) {
-					this.loginField.value='';
-					this.passField.value='';
+					// this.loginField.value='';
+					// this.passField.value='';
 					this.$router.push('admin') 			
 					return true;					
 				}
