@@ -113,13 +113,16 @@
 					login: null,
 					password: null,
 					notBot: null,
-					sure: null,
-					loginField: document.getElementById('login'),
-					passField: document.getElementById('password'),
-            }
+					sure: null,         
+				}
         },
         mounted: function () {
             this.$nextTick(function () {
+
+				window.addEventListener("load", function () {
+    				window.loaded = true;
+				});
+
                 const preloader = document.querySelector('.preloader-counter'),
                       wrapper = document.querySelector('.preloader-wrap');
                 
@@ -127,10 +130,11 @@
                 function loaderCount() {
                     if (count > 99) {
                         clearInterval(intervalID);
-                        setTimeout(function(){
-                            wrapper.classList.remove('preloader-show');
-						},500);
-                    }
+  
+						if(window.loaded) {
+							wrapper.classList.remove('preloader-show');
+						};
+                    };
                     preloader.textContent = `${count}%`;
                     count ++;
                 }
@@ -154,8 +158,6 @@
 			},
 			checkForm:function(e) {
 				if(this.login && this.login == "admin" && this.password && this.password == "123" && this.notBot && this.sure) {
-					// this.loginField.value='';
-					// this.passField.value='';
 					this.$router.push('admin') 			
 					return true;					
 				}
