@@ -648,6 +648,7 @@
 		&.modal__error {
 			background: #A6636B;
 			border: 1px solid #A6636B;
+			color: #fff;
 		}
 	}
 

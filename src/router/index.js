@@ -42,4 +42,5 @@ export default new Router({
             component: WaterPage
         },
     ],
+    mode: 'history'
 });

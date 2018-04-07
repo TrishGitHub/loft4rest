@@ -83,13 +83,17 @@
 							
 				section.sec__contacts
 					h3.sec-subttl Связаться со мной
+					.modal.modal__error(v-bind:class="{'modal-show': errors.length }" )
+						i.close-modal(@click="closeModal")
+						ul.error-list
+							li.error-item(v-for="error in errors") {{error}}
 					form(class="form" name="contact-form")
 						.form-group
-							input(type="text", name="login", class="input-field", placeholder="Имя")
-							input(type="password", name="password", class="input-field" , placeholder="Email")
-							textarea(rows="5", class="input-field", placeholder="Ваше сообщение")
+							input(type="text", name="name", class="input-field", placeholder="Имя", v-model="name")
+							input(type="email", name="email", class="input-field" , placeholder="Email", v-model="email")
+							textarea(rows="5", class="input-field", placeholder="Ваше сообщение", v-model="msg")
 						.form-group(class="btn_group")
-							button(type='submit', value='Submit', class="btn btn__green") Отправить
+							button(type='submit', value='Submit', class="btn btn__green" @click="checkForm") Отправить
 							button(type='reset', value='Reset', class="btn btn__green") Очистить
 
 		article.reviev-item
@@ -160,7 +164,11 @@
         },
         data() {
             return {
-                menuOpen: false,
+				menuOpen: false,
+				errors:[],
+				name: null,
+				email: null,
+				msg: null, 
 	            zIndex: 0,
 	            xtrans: 0,
 	            ytrans: 0,
@@ -226,7 +234,25 @@
         methods: {
             toOpenMenu(){
                 this.menuOpen = !this.menuOpen;
-            },
+			},
+			checkForm:function(e) {
+				if(this.name && this.email && this.msg) {	
+					return true;					
+				}
+
+				this.errors = [];			
+
+				if(!this.name) this.errors.push("Введите Ваше имя");
+				if(!this.email) this.errors.push("Укажите правильный адрес электронной почты");
+				if(!this.msg) this.errors.push("Добавьте сообщение");
+
+				document.querySelector('.modal').classList.add('modal-show');
+
+				e.preventDefault();
+			},
+			closeModal(e) {
+				e.target.parentNode.classList.remove('modal-show');
+			},
 	        centerSelf() {
             	const slides = document.getElementsByClassName('carousel-item'),
 		            currentSlide = document.getElementsByClassName('carousel-item')[0],
