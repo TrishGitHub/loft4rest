@@ -40,4 +40,4 @@ process.on('SIGINT', function() {
 
 require('../api/models/blog');
 require('../api/models/avatar');
-require('./user');
+require('../models/user');

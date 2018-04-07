@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HomePage from '@/components/HomePage'
-import AboutPage from '@/components/AboutPage'
-import BlogPage from '@/components/BlogPage'
-import WorksPage from '@/components/WorksPage'
-import AdminPage from '@/components/AdminPage'
+import Vue from 'vue';
+import Router from 'vue-router';
+import HomePage from '@/components/HomePage';
+import AboutPage from '@/components/AboutPage';
+import BlogPage from '@/components/BlogPage';
+import WorksPage from '@/components/WorksPage';
+import AdminPage from '@/components/AdminPage';
 
-import WaterPage from '@/components/WaterPage'
+import WaterPage from '@/components/WaterPage';
 
 Vue.use(Router)
 
