@@ -87,11 +87,11 @@
 						i.close-modal(@click="closeModal")
 						ul.error-list
 							li.error-item(v-for="error in errors") {{error}}
-					form(class="form" name="contact-form")
+					form(class="form" action="/email" method="post" name="contact-form")
 						.form-group
 							input(type="text", name="name", class="input-field", placeholder="Имя", v-model="name")
 							input(type="email", name="email", class="input-field" , placeholder="Email", v-model="email")
-							textarea(rows="5", class="input-field", placeholder="Ваше сообщение", v-model="msg")
+							textarea(rows="5", name="text", class="input-field", placeholder="Ваше сообщение", v-model="text")
 						.form-group(class="btn_group")
 							button(type='submit', value='Submit', class="btn btn__green" @click="checkForm") Отправить
 							button(type='reset', value='Reset', class="btn btn__green") Очистить
@@ -168,7 +168,7 @@
 				errors:[],
 				name: null,
 				email: null,
-				msg: null, 
+				text: null, 
 	            zIndex: 0,
 	            xtrans: 0,
 	            ytrans: 0,
@@ -236,15 +236,15 @@
                 this.menuOpen = !this.menuOpen;
 			},
 			checkForm:function(e) {
-				if(this.name && this.email && this.msg) {	
-					return true;					
+				if(this.name && this.email && this.text) {
+					return true;			
 				}
 
 				this.errors = [];			
 
 				if(!this.name) this.errors.push("Введите Ваше имя");
 				if(!this.email) this.errors.push("Укажите правильный адрес электронной почты");
-				if(!this.msg) this.errors.push("Добавьте сообщение");
+				if(!this.text) this.errors.push("Добавьте сообщение");
 
 				document.querySelector('.modal').classList.add('modal-show');
 

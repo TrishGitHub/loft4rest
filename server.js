@@ -8,6 +8,7 @@ const serveStatic = require('serve-static');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const passport = require('passport');
+const nodeMailer = require('nodemailer');
 
 require('./config/db');
 
@@ -46,6 +47,37 @@ app.use(function(req, res, next) {
 
 app.use('/api', indexApi);
 // app.use('/', index);
+
+app.post('/email', function(req, res) {
+    let transporter = nodeMailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'for.alicht@gmail.com',
+            pass: 'xxx'
+        }
+    });
+    let mailOptions = {
+        from: `"${req.body.name}" <${req.body.email}>`,
+        to: '"Ira Noschenko" <for.alicht@gmail.com>',
+        subject: "Сообщение с сайта loft4rest",
+        text: req
+            .body
+            .text
+            .trim()
+            .slice(0, 500) + `\n Отправлено с: <${req.body.email}>`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+        res.render('/');
+    });
+
+});
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
