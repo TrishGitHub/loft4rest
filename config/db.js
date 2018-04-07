@@ -40,4 +40,5 @@ process.on('SIGINT', function() {
 
 require('../api/models/blog');
 require('../api/models/avatar');
+require('../api/models/skill');
 require('../models/user');
