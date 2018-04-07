@@ -29,7 +29,7 @@
 	@import '../assets/scss/normalize';
 	@import '../assets/scss/variables';
 
-.page__admin { position: relative;
+.page__admin { position: relative; background: url("../assets/images/bg/water.jpg") center no-repeat; background-size: cover;
     &::after {
         content: '';
         position: absolute;

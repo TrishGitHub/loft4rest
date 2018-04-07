@@ -1,6 +1,8 @@
 <template lang="pug">
     .section__about
-        //- h1.section-ttl Страница «Обо мне»
+        h1.section-ttl Страница «Обо мне»
+        ul
+            li(v-for="skill in skills") {{skill.name}}
         //- skill-list(
         //-     v-for="skillType in skillTypes"
         //-     :key="skillType"
@@ -12,79 +14,28 @@
 <script>
     import skillList from './skillList'
 
+    import axios from 'axios';
+
     export default {
         components: {
             skillList: skillList
         },
         data() {
             return {
-            skills: [
-                {
-                    "id": 1,
-                    "name": "Html",
-                    "percents": 10,
-                    "type": 1
-                },
-                {
-                    "id": 2,
-                    "name": "CSS",
-                    "percents": 20,
-                    "type": 1
-                },
-                {
-                    "id": 3,
-                    "name": "javaScript",
-                    "percents": 30,
-                    "type": 1
-                },
-                {
-                    "id": 4,
-                    "name": "Git",
-                    "percents": 40,
-                    "type": 2
-                },
-                {
-                    "id": 5,
-                    "name": "Gulp",
-                    "percents": 50,
-                    "type": 2
-                },
-                {
-                    "id": 6,
-                    "name": "Bower",
-                    "percents": 60,
-                    "type": 2
-                },
-                {
-                    "id": 7,
-                    "name": "Php",
-                    "percents": 70,
-                    "type": 3
-                },
-                {
-                    "id": 8,
-                    "name": "Node.js",
-                    "percents": 80,
-                    "type": 3
-                },
-                {
-                    "id": 9,
-                    "name": "Mongo.db",
-                    "percents": 90,
-                    "type": 3
-                }
-            ],
-            skillTypes: ["Frontend", "Workflow", "Backend"]
+                skills: [],
+                errors: [],
+                skillTypes: ["Frontend", "Backend", "Workflow"]
             };
         },
         mounted() {
-            fetch('skill.json')
-                .then(data => {
-                    return data.json();
-                })
+            axios.get(`http://localhost:5000/api/skill`)
                 .then(response => {
-                    console.log(response);            
+                    this.skills = response.data.skills;
                 })
+                .catch(e => {
+                this.errors.push(e)
+            })
+
         }
     }
 </script>

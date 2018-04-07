@@ -1,10 +1,10 @@
 <template lang="pug">
     tr 
-        // td {{skill.name}}
-        // td
-        //     input(type="text" :value="skill.persents") 
-        // td
-        //     button(type="button", class="btn") Удалить
+        td {{skill.name}}
+        td
+            input(type="text" :value="skill.persents") 
+        td
+            button(type="button", class="btn") Удалить
 </template>
 
 <script>
@@ -12,9 +12,7 @@
         props: {
             skill: Object
         },
-        mounted() {
-            console.log(typeof this.skills);
-        }
+        mounted() { }
     }
 <script>
 
