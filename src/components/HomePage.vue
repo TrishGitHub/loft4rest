@@ -100,10 +100,16 @@
 					g.wave-svg
 						path(fill='none', stroke='#231F20', stroke-width='3.9003', stroke-miterlimit='10', d='M0,85.362c6.663,0,6.663,7.801,13.327,7.801   c6.665,0,6.665-7.801,13.33-7.801c6.667,0,6.667,7.801,13.334,7.801c6.666,0,6.666-7.801,13.331-7.801   c6.67,0,6.67,7.801,13.339,7.801S73.33,85.362,80,85.362')
 					text(transform='matrix(1 0 0 1 19.9785 20.5957)', font-family="'ArialMT'", font-size='24') 100
-
+		.Background
+			canvas.Background-canvas
 </template>
 
 <script>
+    import {createCanvas} from '../assets/utils/canvas';
+    import Haze from '../assets/haze';
+    import shader from '../assets/shaders/haze-water.frag';
+	import TweenLite from 'gsap';
+	
     export default {
         name: 'HomePage',
         data() {
@@ -118,6 +124,8 @@
         },
         mounted: function () {
             this.$nextTick(function () {
+
+				this.initAnim(); 
 
 				window.addEventListener("load", function () {
     				window.loaded = true;
@@ -144,6 +152,119 @@
         created() {
         },
 		methods: {
+			            initAnim() {
+                const divSelector = '.Background';
+                const canvasSelector = '.Background-canvas';
+                const filePath = '/static/img/water.jpg';
+                const fileMapsPath = '/static/img/water-maps.jpg';
+
+
+                let canvas=document.querySelector(canvasSelector);
+
+                let textureAlign={x:0.5,y:0.9};
+                let textures=[
+                {
+                    file:filePath,
+                    name:'image',
+                    align:textureAlign,
+                    scale:{x:1,y:1}
+                },
+                {
+                    file:fileMapsPath,
+                    name:'maps',
+                    align:textureAlign,
+                    scale:{x:0.2,y:0.2},
+                },
+                ];
+
+                let haze=new Haze({
+                canvas,
+                shader,
+                textures,
+                loop:10000
+                });
+
+                haze.gl.createUniform('2f','mouse',0.5,0.5);
+
+                const smooth=(n=6)=>{
+                let samples=[];
+                return (v)=>{
+                    samples=samples.concat(v);
+                    if(samples.length>n){
+                    samples=samples.slice(samples.length-n,samples.length);
+                    }
+                    return samples.reduce((l,cur)=>(l+cur))/samples.length;
+                }
+                }
+
+                const curve=(v,p=0.8)=>v==0?0:Math.pow(Math.abs(v),p)*(v/Math.abs(v));
+
+                let smoothX=smooth();
+                let smoothY=smooth();
+
+                let isTouchDevice = 'ontouchstart' in document.documentElement;
+
+                let parallaxPos={
+                _x:0,
+                _y:0,
+                _willUpdate:false,
+                get x(){
+                    return this._x;
+                },
+                set x(v){
+                    this._x=v;
+                    this.updatePos();
+                },
+                get y(){
+                    return this._y;
+                },
+                set y(v){
+                    this._y=v;
+                    this.updatePos();
+                },
+                updatePos(){
+                    if(this._willUpdate) return;
+                    this._willUpdate=true;
+
+                    requestAnimationFrame(()=>{
+                    this._willUpdate=false;
+                    haze.gl.createUniform('2f','mouse',
+                        -(-1+(this.x*2)),
+                        -(-1+(this.y*2))
+                    );
+                    });
+                }
+                }
+                window.addEventListener('mousemove',function(event){
+                if(!isTouchDevice){
+                    TweenLite.to(parallaxPos,1,{
+                    x:event.pageX/window.innerWidth,
+                    y:event.pageY/window.innerHeight
+                    })
+                }
+                });
+
+                function getDPI(){
+                if(typeof window.devicePixelRatio!="undefined"){
+                    return window.devicePixelRatio;
+                }else{
+                    return 1;
+                }
+                }
+                window.addEventListener('resize',updateSize);
+                function updateSize(){
+                let container=document.querySelector(divSelector);
+                let dimensions=container.getBoundingClientRect();
+                haze.width=dimensions.width;
+                haze.height=dimensions.height;
+                // haze.dpi=getDPI();
+                haze.dpi=1;
+                haze.gl.createUniform('1f','dpi',haze.dpi);
+                haze.gl.createUniform('2f','resolution',haze.width*haze.dpi,haze.height*haze.dpi);
+                }
+                updateSize();
+
+            },
             toFlip(){
                 const enterBtn = document.getElementById('enter-btn');
                 
@@ -295,6 +416,26 @@
 	.input-field:focus+.input-ico__login { background: #f0efe9 url('../assets/images/icons/login-green.png') 50% 50% no-repeat; background-size: 30%; }
 	.input-field:focus+.input-ico__pass { background: #f0efe9 url('../assets/images/icons/password-green.png') 50% 50% no-repeat; background-size: 30%; }
 	
+    .Background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+		overflow: hidden;
+		z-index: -1;
+    }
+
+    .Background::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent 50%, rgba(0, 0, 0, 0.5));
+    }
+
 	@media screen and (max-width: 600px) {
 		.card-wrap { width: 90%; }
 	}

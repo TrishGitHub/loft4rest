@@ -68,7 +68,6 @@
 	.wrapper {
 		min-height: 100%;
 		position: relative;
-		background: url("./assets/images/bg/water.jpg") 50% 50% no-repeat;
 	}
   
   .page__inner { background: none;
