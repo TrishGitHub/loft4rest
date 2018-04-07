@@ -48,10 +48,27 @@
          &::after { display: none; }
     }
 
+    .sec-subttl { display: inline-block; }
+
     .content {
         &-inner { padding: 30px; }
         position: relative;         
         z-index: 1;
+    }
+
+    .skill { display: flex; width: 50%; max-width: 700px; align-items: center;
+        &-head { width: 100%; margin: 1rem; font-size: 1.5rem; }
+
+        .input-field {
+            max-width: 200px;
+            margin: 0 30px;
+            padding: 20px;  
+            font-size: 1rem;          
+        }
+
+        .btn { position: initial; background: $green-light; border: 1px solid $green-light; transition: background-color .6s; 
+            &:hover {background-color: $green-dark; }
+        }
     }
 }
     

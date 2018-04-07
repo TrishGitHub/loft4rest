@@ -1,14 +1,11 @@
 <template lang="pug">
     .section__about
-        h1.section-ttl Страница «Обо мне»
-        ul
-            li(v-for="skill in skills") {{skill.name}}
-        //- skill-list(
-        //-     v-for="skillType in skillTypes"
-        //-     :key="skillType"
-        //-     :skillType="skillType"
-        //-     :skills="skills"
-        //- )
+        //- h1.section-ttl Страница «Обо мне»
+        skill-list(
+            v-for="skillType in skillTypes"
+            :key="skillType"
+            :skillType="skillType"
+        )
 </template>
 
 <script>

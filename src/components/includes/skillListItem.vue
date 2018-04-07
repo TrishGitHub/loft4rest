@@ -1,18 +1,33 @@
 <template lang="pug">
-    tr 
-        td {{skill.name}}
+    tr
         td
-            input(type="text" :value="skill.persents") 
+            input(v-for="skill in skills" type="text" :value="skill.persents") 
         td
             button(type="button", class="btn") Удалить
 </template>
 
 <script>
-    export default {
+    import axios from 'axios';
+
+    export default {        
         props: {
             skill: Object
         },
-        mounted() { }
+        data() {
+            return {
+                skills: [],
+                errors: [],
+            };
+        },
+        mounted() {
+            axios.get(`http://localhost:5000/api/skill`)
+                .then(response => {
+                    this.skills = response.data.skills;
+                })
+                .catch(e => {
+                this.errors.push(e)
+            })
+         }
     }
 <script>
 
