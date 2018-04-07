@@ -1,0 +1,26 @@
+{
+    "server": {
+        "path": "http://localhost:3000",
+        "blog": "/api/blog",
+        "avatar": "/api/avatar"
+    },
+    "db": {
+        "host": "localhost",
+        "port": "27017",
+        "name": "4rest",
+        "user": "",
+        "password": ""
+    },
+    "mail": {
+        "subject": "Сообщение с сайта",
+        "smtp": {
+            "host": "smtp.gmail.com",
+            "port": 465,
+            "secure": true,
+            "auth": {
+                "user": "for.alicht@gmail.com",
+                "pass": "7895123alicht"
+            }
+        }
+    }
+}
