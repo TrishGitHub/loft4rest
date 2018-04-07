@@ -58,7 +58,7 @@ module.exports = {
             },
             {
                 test: /\.(frag|vert)$/,
-                loader: 'webpack-glsl'
+                loader: 'webpack-glsl-loader'
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

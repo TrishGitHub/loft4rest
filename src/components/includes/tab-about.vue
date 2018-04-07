@@ -1,12 +1,12 @@
 <template lang="pug">
     .section__about
-        h1.section-ttl Страница «Обо мне»
-        skill-list(
-            v-for="skillType in skillTypes"
-            :key="skillType"
-            :skillType="skillType"
-            :skills="skills"
-        )
+        //- h1.section-ttl Страница «Обо мне»
+        //- skill-list(
+        //-     v-for="skillType in skillTypes"
+        //-     :key="skillType"
+        //-     :skillType="skillType"
+        //-     :skills="skills"
+        //- )
 </template>
 
 <script>
@@ -78,14 +78,13 @@
             };
         },
         mounted() {
-            // fetch('/src/data.json')
-            //     .then(data => {
-            //         return data.json();
-            //     })
-            //     .then(response => {
-            //         console.log(response);            
-            //     })
-
+            fetch('skill.json')
+                .then(data => {
+                    return data.json();
+                })
+                .then(response => {
+                    console.log(response);            
+                })
         }
     }
 </script>

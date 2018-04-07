@@ -1,28 +1,27 @@
 <template lang="pug">
     .wrapper.page__water
-        h1 Water Page
+        .Background
+        canvas.Background-canvas
 </template>
 
 <script>
-    // import {createCanvas} from './utils/canvas';
-    // import Haze from './haze';
-    // import shader from './shaders/haze-water.frag';
-    // import TweenLite from 'gsap'
+    import {createCanvas} from '../assets/utils/canvas';
+    import Haze from '../assets/haze';
+    import shader from '../assets/shaders/haze-water.frag';
+    import TweenLite from 'gsap'
 
     export default {
         mounted: function() {
             this.$nextTick(function(){
-
-                // this.initAnim();
-                
+                this.initAnim();                
             });
         },
         methods: {
             initAnim() {
                 const divSelector = '.Background';
                 const canvasSelector = '.Background-canvas';
-                const filePath = 'img/water.jpg';
-                const fileMapsPath = 'img/water-maps.jpg';
+                const filePath = '/static/img/water.jpg';
+                const fileMapsPath = '/static/img/water-maps.jpg';
 
 
                 let canvas=document.querySelector(canvasSelector);
@@ -142,6 +141,24 @@
         background: none;
 
         h1 { margin: 0; }
+    }
+
+    .Background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .Background::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent 50%, rgba(0, 0, 0, 0.5));
     }
 
 </style>
