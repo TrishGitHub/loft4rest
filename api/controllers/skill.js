@@ -19,26 +19,23 @@ module.exports.getSkills = function(req, res) {
 };
 
 module.exports.createSkill = function(req, res) {
-    // создаем новую запись блога и передаем в нее поля из формы
     const Model = mongoose.model('skill');
     let item = new Model({
-        title: req.body.title,
-        date: new Date(req.body.date),
-        body: req.body.text
+        name: req.body.name,
+        percents: req.body.percents,
+        type: req.body.type
     });
-    // сохраняем запись в базе
     item
         .save()
         .then(item => {
             return res
                 .status(201)
-                .json({ status: 'Запись успешно добавлена' });
+                .json({ status: 'Навык успешно добавлен' });
         }, err => {
-            // обрабатываем  и отправляем
             res
                 .status(404)
                 .json({
-                    status: 'При добавление записи произошла ошибка: ' + err
+                    status: 'При добавлении навыка произошла ошибка: ' + err
                 });
         });
 };

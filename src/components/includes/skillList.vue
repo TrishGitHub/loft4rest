@@ -6,10 +6,15 @@
             input(class="input-field" type="text" :value="skill.percents") 
             button(type="button", @click="deleteSkill" class="btn") Удалить
             //- skill-list-item
-        .add-wrap
+        form.form#addSkill(class="add-wrap" @submit.prevent="sendSkill(skillType)")
             input(class="input-field" type="text" name="newSkill" placeholder="Новый навык", v-model="skill.name") 
             input(class="input-field" type="text" name="newScore" placeholder="Cтепень владения", v-model="skill.percents") 
-            button(type="button", name="addNewSkill" @click="addNewSkill(skillType)" class="btn") Добавить
+            input(name="" type="submit" value="Добавить").btn
+
+        //- .add-wrap
+        //-     input(class="input-field" type="text" name="newSkill" placeholder="Новый навык", v-model="skill.name") 
+        //-     input(class="input-field" type="text" name="newScore" placeholder="Cтепень владения", v-model="skill.percents") 
+        //-     button(type="button", name="addNewSkill" @click="addNewSkill(skillType)" class="btn") Добавить
 </template>
 
 <script>
@@ -47,25 +52,40 @@
             })   
         }, 
         methods: {
+            sendSkill(skillType) {              
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:3000/api/skill',
+                    data: {
+                    name: this.skill.name,
+                    percents: this.skill.percents,
+                    type: this.checkSkillType(skillType)
+                    }
+                }) 
+                .then(rs => {
+                    // this.$emit('updateList');
+                });
+            },
             deleteSkill(){
                 alert('delete');
             },
-            addNewSkill(skillType){
-                let newSkill = {
-                    name: this.skill.name,
-                    percents: this.skill.percents,
-                    type:  this.checkSkillType(skillType),
-                }
-                console.log(newSkill);
+            // addNewSkill(skillType){
+            //     let newSkill = {
+            //         name: this.skill.name,
+            //         percents: this.skill.percents,
+            //         type:  this.checkSkillType(skillType),
+            //     }
+            //     console.log(newSkill);
 
-                axios.get(`http://localhost:5000/api/skill`, newSkill)
-                .then(response => {
-                     console.log(response);
-                })
-                .catch(e => {
-                this.errors.push(e)
-            })  
-            },
+            //     axios.get(`http://localhost:5000/api/skill`)
+            //     .then(response => {
+            //          console.log(response);
+            //           this.skills = response.data.skills;
+            //     })
+            //     .catch(e => {
+            //     this.errors.push(e)
+            // })  
+            // },
             checkSkillType(skillTypeName) {
                 switch (skillTypeName) {
                     case 'Frontend' :
