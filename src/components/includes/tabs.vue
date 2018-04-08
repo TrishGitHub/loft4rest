@@ -4,7 +4,7 @@
             li.tab-item(v-for="(tab, index) in tabs"
                         :class="{'tab-active': index == 0 }"
                         )
-                a(href="#").tab-link {{tab}}  
+                router-link(:to="{ path: tab.link }").tab-link {{tab.title}}  
 
 
 </template>
@@ -13,7 +13,7 @@
     export default {
         data() {
             return {
-                tabs: ['Обо мне', 'Блог', 'Работы']
+                tabs: [{'title': 'Обо мне', 'link': 'admin/about'}, {'title':'Блог', 'link': 'admin/blog'}, {'title': 'Работы', 'link': 'admin/works'}],
             }
         }
     }
