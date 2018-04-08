@@ -7,9 +7,9 @@
             button(type="button", @click="deleteSkill" class="btn") Удалить
             //- skill-list-item
         .add-wrap
-            input(class="input-field" type="text" name="newSkill" placeholder="Новый навык") 
-            input(class="input-field" type="text" name="newScore" placeholder="Cтепень владения") 
-            button(type="button", name="addNewSkill" @click="addNewSkill" class="btn") Добавить
+            input(class="input-field" type="text" name="newSkill" placeholder="Новый навык", v-model="skill.name") 
+            input(class="input-field" type="text" name="newScore" placeholder="Cтепень владения", v-model="skill.percents") 
+            button(type="button", name="addNewSkill" @click="addNewSkill(skillType)" class="btn") Добавить
 </template>
 
 <script>
@@ -30,6 +30,10 @@
             return {
                 skills: [],
                 errors: [],
+                skill: {
+                    name: null,
+                    percents: null,
+                },
             };
         },
 
@@ -46,8 +50,21 @@
             deleteSkill(){
                 alert('delete');
             },
-            addNewSkill(){
-                alert('add');
+            addNewSkill(skillType){
+                let newSkill = {
+                    name: this.skill.name,
+                    percents: this.skill.percents,
+                    type:  this.checkSkillType(skillType),
+                }
+                console.log(newSkill);
+
+                axios.get(`http://localhost:5000/api/skill`, newSkill)
+                .then(response => {
+                     console.log(response);
+                })
+                .catch(e => {
+                this.errors.push(e)
+            })  
             },
             checkSkillType(skillTypeName) {
                 switch (skillTypeName) {
